@@ -1,0 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<c:set var="cp" value="<%=request.getContextPath() %>"/>
+
+<script type="text/javascript">
+	var contextPath = '<c:out value="${cp}" />/';
+	var saveUserImage = '<c:out value="${userInfo.saveUserImage}" />';
+	var nowDate = '<fmt:formatDate value="${now}" type="DATE" pattern="yyyyMMddHHmmss" />';
+</script>
+
+<script src="${cp }/resources/jquery/jquery-1.10.2.min.js" ></script>
+<script src="${cp }/resources/js/arccodion.js" ></script>
+
+<!-- plug-in -->
+<!-- <script src="${cp}/resources/js/jquery.form.js"></script>
+<script src="${cp}/resources/js/json.min.js"></script>
+<script src="${cp}/resources/js/jquery.masonry.js"></script>
+<script src="${cp}/resources/js/jquery.plugin.js"></script>
+<script src="${cp}/resources/js/jquery.scroll.pagination.js"></script>
+ -->
