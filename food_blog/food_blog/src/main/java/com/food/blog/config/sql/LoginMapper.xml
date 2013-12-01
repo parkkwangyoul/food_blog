@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="loginMapper">
+	<resultMap type="UserInfo" id="UserInfoMap">
+		<result property="userId" column="user_id"/>
+		<result property="name" column="name"/>
+		<result property="password" column="password"/>
+	</resultMap>
+	
+	<select id="userLogin" resultMap="UserInfoMap" parameterType="UserInfo">
+	SELECT 
+		user_id, name, password
+	FROM
+		users
+	WHERE
+		user_id = #{userId}
+	AND
+		password = #{password}
+	</select>
+	
+	<insert id="join" parameterType="UserInfo">
+	 INSERT INTO
+        	users
+        	(
+        		user_id,
+        		name,
+        		password
+        	)   
+        VALUES
+        	(
+        		#{userId},
+        		#{name},
+        		#{password}
+        	) 
+	</insert>
+
+</mapper>
