@@ -10,8 +10,5 @@
 <title>Food_Blog</title>
  
 <%@include file="style.jspf" %>
-<%--
-<%@include file="script_head.jspf" %>
- --%>
 </head>
 <body>

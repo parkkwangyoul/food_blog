@@ -32,11 +32,7 @@ public class LoginValidator implements Validator {
 		if (userId.length() > 20) {
 			errors.rejectValue("userId", "create.userId.emptyOrError");
 		}
-		/*
-		if (loginService.checkExistUserId(userInfo)){
-			errors.rejectValue("userId", "create.userId.existUserId");
-		}*/
-
+		
 		if (password.length() < 8 || password.length() > 16) {
 			errors.rejectValue("password", "create.password.emptyOrError");
 		}

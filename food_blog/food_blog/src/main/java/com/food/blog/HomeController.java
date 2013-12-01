@@ -32,8 +32,6 @@ public class HomeController {
 	@RequestMapping("/")
 	public ModelAndView home( HttpSession session, @ModelAttribute UserInfo userInfo){
 		ModelAndView mav = new ModelAndView();
-		
-		//UserInfo userInfo = getSession(session);
 
 		mav.addObject("userInfo", userInfo);
 		mav.setViewName("home");

@@ -73,16 +73,6 @@ public class LoginController {
 	public ModelAndView joinSubmit(@ModelAttribute UserInfo userInfo, BindingResult result){	
 		ModelAndView mav = new ModelAndView();
 		
-		/*
-		if(!result.hasErrors()){		
-			//loginService.join(userInfo);
-			//mav.setView(new RedirectView("/giproject/login/login.gp"));
-		} else {			
-			
-			mav.addObject("userInfo", new UserInfo());
-			mav.setViewName("login/create");
-		}
-		*/
 		loginService.join(userInfo);
 		
 		mav.addObject("userInfo", new UserInfo());
