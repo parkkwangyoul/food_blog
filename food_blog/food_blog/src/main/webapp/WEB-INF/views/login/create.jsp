@@ -97,5 +97,6 @@
 			</tbody>
 		</table>
 	</form:form>
+</section>
 
 
