@@ -10,7 +10,7 @@
 <br>
 <br>
 <form:form commandName="userInfo">
-	<ul class="gi-login-loginForm">
+	<ul class="fb-login-loginForm">
 		<li>아이디</li>
 		<li><form:input path="userId" /></li>
 		<li>비밀번호</li>

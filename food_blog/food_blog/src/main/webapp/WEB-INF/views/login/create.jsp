@@ -5,12 +5,12 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ include file="../layout/create_header.jspf"%>
-<section class="gi-create-user-wrap">
-	<header class="gi-create-user-info">
+<section class="fb-create-user-wrap">
+	<header class="fb-create-user-info">
 		<h1>회원가입</h1>
 	</header>
 	<form:form commandName="userInfo">
-		<ul class="gi-login-loginForm">
+		<ul class="fb-login-loginForm">
 			<li>아이디</li>
 			<li><form:input path="userId" /></li>
 			<li>비밀번호</li>
