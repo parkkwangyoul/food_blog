@@ -4,10 +4,16 @@ public class UserInfo {
 	private String userId;
 	private String name;
 	private String password;
+	private String confirmPassword;
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
+
 	private String emailAddress;
-	
-	private String realUserImage;
-	private String saveUserImage;
+	private String blogAddress;
 	
 	
 	public String getUserId() {
@@ -37,26 +43,17 @@ public class UserInfo {
 	public void setEmailAddress(String emailAddress) {
 		this.emailAddress = emailAddress;
 	}
-	
-	public String getRealUserImage() {
-		return realUserImage;
+	public String getBlogAddress() {
+		return blogAddress;
 	}
-	public void setRealUserImage(String realUserImage) {
-		this.realUserImage = realUserImage;
+	public void setBlogAddress(String blogAddress) {
+		this.blogAddress = blogAddress;
 	}
-	
-	public String getSaveUserImage() {
-		return saveUserImage;
-	}
-	public void setSaveUserImage(String saveUserImage) {
-		this.saveUserImage = saveUserImage;
-	}
-	
 	@Override
 	public String toString() {
 		return "UserInfo [userId=" + userId + ", name=" + name + ", password="
-				+ password + ", emailAddress=" + emailAddress
-				+ ", realUserImage=" + realUserImage + ", saveUserImage="
-				+ saveUserImage + "]";
+				+ password + ", confirmPassword=" + confirmPassword
+				+ ", emailAddress=" + emailAddress + ", blogAddress="
+				+ blogAddress + "]";
 	}
 }

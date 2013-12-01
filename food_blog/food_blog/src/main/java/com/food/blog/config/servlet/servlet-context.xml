@@ -47,5 +47,15 @@
 				<beans:bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" />
 			</beans:list>
 		</beans:property>
-	</beans:bean>	
+	</beans:bean>
+	
+	<!-- Create error message -->
+	<beans:bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <beans:property name="basenames">
+             <beans:list>
+                  <beans:value>/com/food/blog/message</beans:value>
+                  <beans:value>/com/food/blog/message/messages_login_ko_KR.properties</beans:value>
+             </beans:list>
+        </beans:property>
+    </beans:bean>
 </beans:beans>

@@ -25,6 +25,9 @@ public class LoginValidator implements Validator {
 		UserInfo userInfo = (UserInfo) target;
 		String userId = userInfo.getUserId();
 		String password = userInfo.getPassword();
+		String confirmPassword = userInfo.getConfirmPassword();
+		String emailAddress = userInfo.getEmailAddress();
+		String blogAddress = userInfo.getBlogAddress();
 
 
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userId", "create.userId.emptyOrError");
@@ -33,10 +36,35 @@ public class LoginValidator implements Validator {
 			errors.rejectValue("userId", "create.userId.emptyOrError");
 		}
 		
+		if (loginService.checkExistUserId(userInfo)){
+			errors.rejectValue("userId", "create.userId.existUserId");
+		}
+		
 		if (password.length() < 8 || password.length() > 16) {
 			errors.rejectValue("password", "create.password.emptyOrError");
 		}
+		
+		if (!password.equals(confirmPassword) || confirmPassword.equals("")) {
+			errors.rejectValue("confirmPassword",
+					"create.confirmPassword.notEqualPassword");
+		}
 
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "emailAddress", "create.emailAddress.empty");
+		
+		if(loginService.checkExistBlogAddress(userInfo)){
+			errors.rejectValue("blogAddress", "create.blogAddress.emptyOrError");
+		}
+
+		if (Pattern
+				.matches(
+						"/^[-A-Za-z0-9_]+[-A-Za-z0-9_.]*[@]{1}[-A-Za-z0-9_]+[-A-Za-z0-9_.]*[.]{1}[A-Za-z]{2,5}$/",
+						emailAddress)) {
+			errors.rejectValue("emailAddress",
+					"create.confirmEmailAddress.notMatchPattern");
+		}
+		
+		if(blogAddress.length() > 20){
+			errors.rejectValue("blogAddress", "create.blogAddress.emptyOrError");
+		}
 	}
 }

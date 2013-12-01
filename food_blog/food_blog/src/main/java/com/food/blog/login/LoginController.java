@@ -1,9 +1,12 @@
 package com.food.blog.login;
 
+import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Result;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -21,6 +24,9 @@ public class LoginController {
 
 	@Resource
 	private LoginService loginService;
+	
+	@Resource
+	private LoginValidator loginValidator;
 	
 	@RequestMapping(value = "/login/", method = RequestMethod.GET)
 	public ModelAndView login(HttpSession session,
@@ -70,13 +76,22 @@ public class LoginController {
 	 * @param userInfo
 	 */
 	@RequestMapping(value = "/join/", method = RequestMethod.POST)
-	public ModelAndView joinSubmit(@ModelAttribute UserInfo userInfo, BindingResult result){	
+	public ModelAndView joinSubmit(@ModelAttribute UserInfo userInfo, BindingResult result, Map<String, BindingResult> model){	
 		ModelAndView mav = new ModelAndView();
 		
-		loginService.join(userInfo);
 		
-		mav.addObject("userInfo", new UserInfo());
-		mav.setView(new RedirectView("/food_blog/login/"));
+		
+		loginValidator.validate(userInfo, result);
+		
+		model.put(BindingResult.class.getName() + ".loginValidator", result);
+		if(!result.hasErrors()){		
+			loginService.join(userInfo);
+			mav.setView(new RedirectView("/food_blog/"));
+		} else {			
+			
+			mav.addObject("userInfo", new UserInfo());
+			mav.setViewName("login/create");
+		}
 		
 		return mav; 
 	}
