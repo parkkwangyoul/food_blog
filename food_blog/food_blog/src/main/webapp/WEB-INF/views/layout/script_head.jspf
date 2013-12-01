@@ -5,7 +5,6 @@
 
 <script type="text/javascript">
 	var contextPath = '<c:out value="${cp}" />/';
-	var saveUserImage = '<c:out value="${userInfo.saveUserImage}" />';
 	var nowDate = '<fmt:formatDate value="${now}" type="DATE" pattern="yyyyMMddHHmmss" />';
 </script>
 

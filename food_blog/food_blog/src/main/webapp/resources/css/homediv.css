@@ -1,8 +1,0 @@
-@CHARSET "UTF-8";
-
-#container {background-color: #f0f0f0; width: 960:px; margin:0 auto; padding:10px;visibility: visible;}
-#header {background-color: #908886; height:auto; text-align: center;}
-#content {border-bottom-color: #f5f5f5; float:left; width:660px; height:400px;}
-#sidelogininfo {background-color: #dcdad9; float:right; width:300px; height:100px; }
-#sideadinfo {background-color: #005500; float: right; width: 300px; height: 300px;}
-#footer {background-color: #555555; clear:both; height:100px;}
