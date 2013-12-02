@@ -34,6 +34,9 @@
 						<c:when test = "${not empty sessionScope.userInfo }">
 							<h2>${sessionScope.userInfo.name }님 </h2>
 						</c:when>
+						<c:otherwise>
+							<br>손님 환영합니다.<br>
+						</c:otherwise>
 					</c:choose>
 				<h2>Categories :</h2>
 				<ul class="accordion">
