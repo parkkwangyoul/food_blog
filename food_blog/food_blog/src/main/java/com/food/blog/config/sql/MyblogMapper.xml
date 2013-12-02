@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="myblogInfoMapper">
+	<resultMap type="UserBlogInfo" id="UserBlogInfoMap">
+		<result property="blogAddress" column="blog_address"/>
+		<result property="blogName" column="blog_name"/>
+	</resultMap>
+	
+	<select id="getBlogInfo" resultMap="UserBlogInfoMap" parameterType="String">
+	SELECT 
+		blog_address, blog_name
+	FROM
+		user_blog
+	WHERE
+		blog_address = #{blogAddress}
+	</select>
+	
+	<select id="blogCheck" resultType="Integer" parameterType="String">
+	SELECT 
+		count(*)
+	FROM
+		user_blog
+	WHERE
+		blog_addres = #{blogAddress}
+	</select>
+	
+	<insert id="join" parameterType="UserBlogInfo">
+	INSERT INTO
+			user_blog
+			(
+				blog_address,
+				blog_name
+			)
+		VALUES
+			(
+				#{blogAddress},
+				#{blogName}
+			)	
+	</insert>
+	
+	
+	
+</mapper>
