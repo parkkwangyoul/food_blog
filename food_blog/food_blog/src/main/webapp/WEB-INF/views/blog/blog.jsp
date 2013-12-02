@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ page session="false"%>
+<%@ page session="true"%>
 <%@ include file="../layout/style.jspf"%>
 <%@ include file="../layout/script_head.jspf" %>
 <html>
@@ -33,6 +33,11 @@
 					src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSnrAmsRR9Iamgo9U_3AgeuCo5mh4CwTGq6_pOd0TbijPZsVqcI"
 					height="100" width="100"><br>
 					난 보았느니라...
+					<c:choose>
+						<c:when test = "${not empty sessionScope.userInfo }">
+							<h2>${sessionScope.userInfo.name }님 </h2>
+						</c:when>
+					</c:choose>
 				<h2>Categories :</h2>
 				<ul class="accordion">
 					<li id="one" class="files">

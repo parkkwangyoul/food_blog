@@ -13,7 +13,8 @@
 
 <link rel="stylesheet" type="text/css" href="homeStyle.css"
 	media="screen" />
-
+</head>
+<body>
  	<div id="container">
 		<div id="header">
 			<img
@@ -30,27 +31,29 @@
 		<div id="sidelogininfo">
 			<section class="gi-login-body">
 				<header class="gi-login-header">
-					<form:form commandName="userInfo">
-						<ul class="gi-login-loginForm">
-							<c:choose>
-								<c:when test = "${not empty sessionScope.userInfo }">
-									<li><h2>${sessionScope.userInfo.name }님  환영합니다. </h2></li>
-									<li><a href="<c:url value='/login/logout/'/>">로그아웃</a></li>
-									<li><a href="<c:url value='./blog/blog'/>">나의 블로그로 가기 </a></li>
-								</c:when>
-								<c:otherwise>
+					<ul class="gi-login-loginForm">
+						<c:choose>
+							<c:when test = "${not empty sessionScope.userInfo }">
+								<li><h2>${sessionScope.userInfo.name }님  환영합니다. </h2></li>
+								<li><a href="<c:url value='/login/logout/'/>">로그아웃</a></li>
+								<form:form method="POST" action="./blog/" commandName="userInfo">
+									<form:input type = "hidden" path="userId" />
+									<input type = "submit" value="나의 블로그로 가기"/>
+								</form:form>
+							</c:when>
+							<c:otherwise>
+								<form:form commandName="userInfo">
 									<li><form:input path="userId" value="아이디" /></li>
 									<li><input type="submit" value="로그인" /></li>
 									<li><form:password path="password" value="password" /></li>
 									<br>
 									<li><a href="<c:url value='/join/' />">회원가입</a></li>
-								</c:otherwise>
-							</c:choose>
-						</ul>
-					</form:form>
+								</form:form>
+							</c:otherwise>
+						</c:choose>
+					</ul>
 				</header>
 			</section>
-
 		</div>
 		<div id="sideadinfo">광고</div>
 		<div id="footer">그냥바닥임?</div>

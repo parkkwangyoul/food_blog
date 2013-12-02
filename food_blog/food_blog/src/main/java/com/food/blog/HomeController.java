@@ -1,9 +1,5 @@
 package com.food.blog;
 
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -11,7 +7,6 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -50,9 +45,10 @@ public class HomeController {
 	public ModelAndView loginSubmit(HttpSession session, HttpServletRequest request, @ModelAttribute UserInfo userInfo){
 		ModelAndView mav = new ModelAndView();
 		UserInfo loginUserInfo = loginService.login(userInfo);
+		session.setAttribute("abc", loginUserInfo);
 		
 		System.out.println(loginUserInfo.toString());
-
+		
 		if (loginUserInfo.getUserId() != null) {
 			session.setAttribute("userInfo", loginUserInfo);
 			
@@ -64,6 +60,5 @@ public class HomeController {
 		}
 
 		return mav; 
-		
 	}
 }
