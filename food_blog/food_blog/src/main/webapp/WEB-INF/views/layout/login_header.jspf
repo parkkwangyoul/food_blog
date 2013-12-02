@@ -12,4 +12,5 @@
 <%@include file="style.jspf" %>
 </head>
 <body>
-	
+</body>
+</html>

@@ -11,8 +11,7 @@
 <head>
 <title>Tasty_Home</title>
 
-<link rel="stylesheet" type="text/css" href="homeStyle.css"
-	media="screen" />
+<link rel="stylesheet" type="text/css" href="homeStyle.css" media="screen" />
 
  	<div id="container">
 		<div id="header">

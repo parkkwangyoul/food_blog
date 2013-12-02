@@ -9,13 +9,15 @@
 <center>아이디나 비밀번호가 맞지 않습니다.</center>
 <br>
 <br>
-<form:form commandName="userInfo">
-	<ul class="fb-login-loginForm">
-		<li>아이디</li>
-		<li><form:input path="userId" /></li>
-		<li>비밀번호</li>
-		<li><form:password path="password" /></li>
-		<li><input type="submit" value="로그인" /></li>
-	</ul>
-</form:form>
+<div class="wrap">
+	<form:form commandName="userInfo">
+		<ul class="fb-login-loginForm">
+			<li>아이디</li>
+			<li><form:input path="userId" /></li>
+			<li>비밀번호</li>
+			<li><form:password path="password" /></li>
+			<li><input type="submit" value="로그인" /></li>
+		</ul>
+	</form:form>
+</div>
 </header>
