@@ -41,7 +41,9 @@ public class MyblogController {
 		return mav;
 	}
 	
-	
+	/**
+	 * 주소로 블로그 블러오기
+	 */
 	@RequestMapping(value = "/blog/{blogAddress}", method = RequestMethod.GET)
 	public ModelAndView goBlogByBlogAddress(HttpSession session, HttpServletRequest request, 
 			UserInfo userInfo, @PathVariable String blogAddress){
@@ -59,6 +61,18 @@ public class MyblogController {
 			session.setAttribute("userBlogInfo", getUserBlogInfo);
 			mav.setView(new RedirectView("/food_blog/"));
 		}		
+		return mav;
+	}
+	
+	/**
+	 * write부분 태스트용
+	 */
+	@RequestMapping(value = "/blog/write", method = RequestMethod.GET)
+	public ModelAndView writeTest(HttpSession session, @ModelAttribute UserInfo userInfo) {
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("blog/write");
+
 		return mav;
 	}
 	
