@@ -36,6 +36,7 @@
 								<c:when test = "${not empty sessionScope.userInfo }">
 									<li><h2>${sessionScope.userInfo.name }님  환영합니다. </h2></li>
 									<li><a href="<c:url value='/login/logout/'/>">로그아웃</a></li>
+									<li><a href="<c:url value='./blog/blog'/>">나의 블로그로 가기 </a></li>
 								</c:when>
 								<c:otherwise>
 									<li><form:input path="userId" value="아이디" /></li>
