@@ -44,6 +44,7 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	public ModelAndView loginSubmit(HttpSession session, HttpServletRequest request, @ModelAttribute UserInfo userInfo){
 		ModelAndView mav = new ModelAndView();
+		System.out.println("Before Connect DB");
 		UserInfo loginUserInfo = loginService.login(userInfo);
 		session.setAttribute("abc", loginUserInfo);
 		

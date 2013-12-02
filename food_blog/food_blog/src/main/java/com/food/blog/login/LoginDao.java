@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class LoginDao extends SqlSessionDaoSupport {
 	public UserInfo get(UserInfo userInfo){
+		System.out.println("Before Connect DB");
 		return getSqlSession().selectOne("loginMapper.userLogin", userInfo);
 	}
 	

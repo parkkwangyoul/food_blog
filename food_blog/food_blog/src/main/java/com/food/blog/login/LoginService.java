@@ -17,8 +17,9 @@ public class LoginService {
 	
 	@Transactional
 	public UserInfo login(UserInfo userInfo){
+		System.out.println("Before Connect DB");
 		UserInfo loginUserInfo = loginDao.get(userInfo);
-		
+		System.out.println("After Connect DB");
 		if( loginUserInfo != null ){			
 			return loginUserInfo;
 		}else{

@@ -42,8 +42,8 @@
 							<c:otherwise>
 								<form:form commandName="userInfo">
 									<li><form:input path="userId" value="아이디" /></li>
-									<li><input type="submit" value="로그인" /></li>
 									<li><form:password path="password" value="password" /></li>
+									<li><input type="submit" value="로그인" /></li>
 									<br>
 									<li><a href="<c:url value='/join/' />">회원가입</a></li>
 								</form:form>
