@@ -10,9 +10,6 @@
 <html>
 <head>
 <title>Tasty_Home</title>
-<link rel="stylesheet" type="text/css" href="homeStyle.css"
-	media="screen" />
-	<!-- <script src="jquery-1.10.2.min.js" ></script> -->
 </head>
 <body>
 	<div id="wrap">
