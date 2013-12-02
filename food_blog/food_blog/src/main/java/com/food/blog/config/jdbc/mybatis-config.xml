@@ -3,8 +3,9 @@
 
 <configuration>   
     <typeAliases>
-    	<typeAlias alias="UserInfo" type="com.food.blog.login.UserInfo" />    
-    </typeAliases>    
+    	<typeAlias alias="UserInfo" type="com.food.blog.login.UserInfo" /> 
+    	<typeAlias alias="UserBlogInfo" type="com.food.blog.myblog.UserBlogInfo"/>
+    </typeAliases>
 
 </configuration>
 
