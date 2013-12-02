@@ -22,13 +22,13 @@
 				<form:password path="password" value="********"/>
 			</p>
 			<p class="login-submit">
-				:before
+				<!-- :before -->
 				<button type="submit" class="login-button">
 					:before 
 					"Login"
 					:after
 				</button>
-				:after
+				<!-- :after -->
 			</p>
 	</form:form>
 	<%-- <center>아이디나 비밀번호가 맞지 않습니다.</center>

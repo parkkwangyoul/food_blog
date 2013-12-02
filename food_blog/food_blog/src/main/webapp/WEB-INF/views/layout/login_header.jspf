@@ -11,8 +11,6 @@
 <link rel="stylesheet" type="text/css"
 	href="${cp}/resources/css/login.css" media="screen" />
 <title>Food_Blog</title>
-
-<%@include file="style.jspf"%>
 </head>
 <body>
 </body>
