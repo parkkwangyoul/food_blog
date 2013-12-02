@@ -21,14 +21,12 @@
 		<result property="blogPn" column="blog_pn"/>
 	</resultMap>
 	
-	<select id="getContent" resultMap="contentMap" parameterType="String">
+	<select id="getContent" resultMap="ContentMap" parameterType="String">
 	SELECT
 		pn, type, content, write_user, write_date, star, usestar, usecomment, blog_address
 	FORM
 		blog_board
 	where
-		pn = 1
-	AND
 		blog_address = #{blogAddress}	
 	</select>
 	
