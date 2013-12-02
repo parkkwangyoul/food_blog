@@ -59,6 +59,24 @@ public class LoginController {
 		return mav;
 	}
 	
+	@RequestMapping(value = "/login/logout/", method=RequestMethod.GET)
+	public ModelAndView logout(HttpSession session){ 
+		ModelAndView mav = new ModelAndView();
+		
+		UserInfo userInfo = (UserInfo)session.getAttribute("userInfo");
+		
+		if(userInfo != null){
+			session.removeAttribute("userInfo");
+			session.setAttribute("userInfo", null);
+		}else
+			logger.debug("로그인 상태가 아닙니다.");
+		
+		mav.setView(new RedirectView("/food_blog/"));
+		
+		return mav;
+	}
+
+	
 	/**
 	 * 회원가입 페이지
 	 * @param userInfo
