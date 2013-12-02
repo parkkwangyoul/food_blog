@@ -4,11 +4,12 @@
 	<resultMap type="UserBlogInfo" id="UserBlogInfoMap">
 		<result property="blogAddress" column="blog_address"/>
 		<result property="blogName" column="blog_name"/>
+		<result property="type" column="type"/>
 	</resultMap>
 	
 	<select id="getBlogInfo" resultMap="UserBlogInfoMap" parameterType="String">
 	SELECT 
-		blog_address, blog_name
+		blog_address, blog_name, type
 	FROM
 		user_blog
 	WHERE
@@ -29,12 +30,14 @@
 			user_blog
 			(
 				blog_address,
-				blog_name
+				blog_name,
+				type
 			)
 		VALUES
 			(
 				#{blogAddress},
-				#{blogName}
+				#{blogName},
+				#{type}
 			)	
 	</insert>
 	
