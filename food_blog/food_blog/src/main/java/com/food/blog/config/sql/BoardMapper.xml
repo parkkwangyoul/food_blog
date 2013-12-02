@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardMapper">
+	<resultMap type="Content" id="ContentMap">
+		<result property="pn" column="pn"/>
+		<result property="type" column="type"/>
+		<result property="content" column="content"/>
+		<result property="writeUser" column="write_user"/>
+		<result property="writeDate" column="write_date"/>
+		<result property="star" column="start"/>
+		<result property="userstar" column="userstart"/>
+		<result property="usercomment" column="usecomment"/>
+		<result property="blogAddress" column="blog_address"/>
+	</resultMap>
+	
+	<resultMap type="Comment" id="CommentMap">
+		<result property="pn" column="pn"/>
+		<result property="content" column="content"/>
+		<result property="writeUser" column="write_user"/>
+		<result property="writeDate" column="write_date"/>
+		<result property="blogPn" column="blog_pn"/>
+	</resultMap>
+	
+	<select id="getContent" resultMap="contentMap" parameterType="String">
+	SELECT
+		pn, type, content, write_user, write_date, star, usestar, usecomment, blog_address
+	FORM
+		blog_board
+	where
+		pn = 1
+	AND
+		blog_address = #{blogAddress}	
+	</select>
+	
+
+
+</mapper>
