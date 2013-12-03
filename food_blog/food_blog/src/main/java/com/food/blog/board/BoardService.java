@@ -23,5 +23,9 @@ public class BoardService {
 		}
 	}
 	
+	public void joinContent(Content content){
+		boardDao.joinContent(content);
+	}
+	
 	
 }
