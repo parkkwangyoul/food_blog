@@ -28,8 +28,12 @@
 					:after</button>
 				<!-- :after -->
 			</p>
+			<div style="float: left; margin-left: 365px">
+				<a href="<c:url value='/join/' />"> <img alt="loginError"
+					src="${cp}/resources/image/btn_sign_in.png" />
+				</a>
+			</div>
 		</form:form>
-		<a href="<c:url value='/join/' />"><img alt="loginError" src="../../../resources/image/btn_sign_in.png" ></a>
 	</center>
 	<%-- <form:form method="POST" action="./join/" commandName="userInfo">
 		<form:input type="hidden" path="userId" />
