@@ -30,6 +30,31 @@
 		blog_address = #{blogAddress}	
 	</select>
 	
+	<insert id="joinContent" parameterMap="ContentMap">
+	INSERT INTO
+			blog_board
+			(
+				type,
+				content,
+				write_date,
+				write_user,
+				star,
+				usestar,
+				usercomment,
+				blog_address
+			)
+		VALUES
+			(
+				#{type},
+				#{content},
+				#{writeDate},
+				#{writeUser},
+				#{star},
+				#{usestar},
+				#{usercomment},
+				#{blogAddress}
+			)	
+	</insert>
 
 
 </mapper>
