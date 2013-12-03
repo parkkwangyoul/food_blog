@@ -182,9 +182,8 @@ table {
  * http://www.opensource.org/licenses/mit-license.php
  */
 body/*, .login-submit, .login-submit:before, .login-submit:after */{
-	width: auto;
-	height: auto;
-	/*margin-top: 10%;*/
+	width: 1400px auto;
+	height: 1400px auto;
 	background-color: #362618;
 	background-position: center center;
 	background-image: url("../image/bg_errLogin.png");
