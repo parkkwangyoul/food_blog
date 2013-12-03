@@ -12,25 +12,29 @@
 <title>TastyBlog - Login Failed</title>
 </head>
 <body>
-	<form:form commandName="userInfo" class="login">
+	<center>
+		<form:form commandName="userInfo" class="login">
 			<p>
 				<label for="login">ID:</label>
-				<form:input value="id" path="userId"/>
+				<form:input value="id" path="userId" />
 			</p>
 			<p>
-				<label for="password">Password:</label> 
-				<form:password path="password" value="********"/>
+				<label for="password">Password:</label>
+				<form:password path="password" value="********" />
 			</p>
 			<p class="login-submit">
 				<!-- :before -->
-				<button type="submit" class="login-button">
-					:before 
-					"Login"
-					:after
-				</button>
+				<button type="submit" class="login-button">:before "Login"
+					:after</button>
 				<!-- :after -->
 			</p>
-	</form:form>
+		</form:form>
+		<a href="<c:url value='/join/' />"><img alt="loginError" src="../../../resources/image/btn_sign_in.png"></a>
+	</center>
+	<%-- <form:form method="POST" action="./join/" commandName="userInfo">
+		<form:input type="hidden" path="userId" />
+		<input type="image" src="../../../resources/image/btn_sign_in.png" />
+	</form:form> --%>
 	<%-- <center>아이디나 비밀번호가 맞지 않습니다.</center>
 	<br>
 	<br>
