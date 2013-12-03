@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.food.blog.board.Content;
 import com.food.blog.login.UserInfo;
 
 @Controller
@@ -68,7 +69,7 @@ public class MyblogController {
 	 * write부분 태스트용
 	 */
 	@RequestMapping(value = "/blog/write", method = RequestMethod.GET)
-	public ModelAndView writeTest(HttpSession session, @ModelAttribute UserInfo userInfo) {
+	public ModelAndView writeTest(HttpSession session, @ModelAttribute UserInfo userInfo, @ModelAttribute Content content) {
 		ModelAndView mav = new ModelAndView();
 		
 		mav.setViewName("blog/write");

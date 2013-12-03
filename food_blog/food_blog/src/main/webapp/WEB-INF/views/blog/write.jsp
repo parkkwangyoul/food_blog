@@ -20,6 +20,8 @@
 			<form:hidden path="blogAddress" value="asd"/>
 			<td><form:textarea path="content"/></td>			
 		</tr>
+		<tr>
+			<th><form:checkbox path="userstar"/>
 	</table>
 	<br>
 	<input type="reset" value="재작성" class="writeBt"/>
