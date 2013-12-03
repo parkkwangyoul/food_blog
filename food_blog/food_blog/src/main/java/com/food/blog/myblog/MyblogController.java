@@ -65,17 +65,7 @@ public class MyblogController {
 		return mav;
 	}
 	
-	/**
-	 * write부분 태스트용
-	 */
-	@RequestMapping(value = "/blog/write", method = RequestMethod.GET)
-	public ModelAndView writeTest(HttpSession session, @ModelAttribute UserInfo userInfo, @ModelAttribute Content content) {
-		ModelAndView mav = new ModelAndView();
-		
-		mav.setViewName("blog/write");
-
-		return mav;
-	}
+	
 	
 	private UserInfo getSession(HttpSession session) {
 		UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");

@@ -4,7 +4,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <title>새 글 쓰기</title>
@@ -21,11 +20,15 @@
 			<td><form:textarea path="content"/></td>			
 		</tr>
 		<tr>
-			<th><form:checkbox path="userstar"/>
+			<th>체크박스로 인트해줄수있나 ㅠ<br>별점 할 체크박스</th>
+			<td><form:textarea path="star"/>별점</td>
+		</tr>
+		<tr>
+			<th>댓글은 추후에 ^^</th>
+		</tr>
 	</table>
 	<br>
-	<input type="reset" value="재작성" class="writeBt"/>
-	<input type="submit" value="확인" class="writeBt"/>	
+	<input type="submit" value="확인"/>	
 	</form:form>
 </div>
 </body>
