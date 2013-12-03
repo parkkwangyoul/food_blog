@@ -7,9 +7,9 @@
 		<result property="content" column="content"/>
 		<result property="writeUser" column="write_user"/>
 		<result property="writeDate" column="write_date"/>
-		<result property="star" column="start"/>
-		<result property="userstar" column="userstart"/>
-		<result property="usercomment" column="usecomment"/>
+		<result property="star" column="star"/>
+		<result property="usestar" column="usestar"/>
+		<result property="usecomment" column="usecomment"/>
 		<result property="blogAddress" column="blog_address"/>
 	</resultMap>
 	
@@ -30,7 +30,7 @@
 		blog_address = #{blogAddress}	
 	</select>
 	
-	<insert id="joinContent" parameterMap="ContentMap">
+	<insert id="joinContent" parameterType="Content">
 	INSERT INTO
 			blog_board
 			(
@@ -40,7 +40,7 @@
 				write_user,
 				star,
 				usestar,
-				usercomment,
+				usecomment,
 				blog_address
 			)
 		VALUES
@@ -51,7 +51,7 @@
 				#{writeUser},
 				#{star},
 				#{usestar},
-				#{usercomment},
+				#{usecomment},
 				#{blogAddress}
 			)	
 	</insert>
