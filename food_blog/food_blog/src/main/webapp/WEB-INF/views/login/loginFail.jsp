@@ -29,7 +29,7 @@
 				<!-- :after -->
 			</p>
 		</form:form>
-		<a href="<c:url value='/join/' />"><img alt="loginError" src="../../../resources/image/btn_sign_in.png"></a>
+		<a href="<c:url value='/join/' />"><img alt="loginError" src="../../../resources/image/btn_sign_in.png" ></a>
 	</center>
 	<%-- <form:form method="POST" action="./join/" commandName="userInfo">
 		<form:input type="hidden" path="userId" />
