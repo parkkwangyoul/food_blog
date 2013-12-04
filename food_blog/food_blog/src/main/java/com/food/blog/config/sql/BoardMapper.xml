@@ -9,10 +9,10 @@
 		<result property="writeUser" column="write_user"/>
 		<result property="writeDate" column="write_date"/>
 		<result property="star" column="star"/>
-		<result property="usestar" column="usestar"/>
-		<result property="usecomment" column="usecomment"/>
+		<result property="useStar" column="usestar"/>
+		<result property="useComment" column="usecomment"/>
 		<result property="blogAddress" column="blog_address"/>
-		<collection property="commentList" column="pn" javaType="java.util.ArrayList" ofType="Comment" select="getCommentListByContentId" />
+		<collection property="commentList" column="pn" javaType="ArrayList" ofType="Comment" select="getCommentListByContentId" />
 	</resultMap>
 	
 	<resultMap type="Comment" id="CommentMap">
@@ -49,7 +49,7 @@
 	    FROM
 	    	blog_board_comment
 	    WHERE
-	    	blog_pn = ${pn}
+	    	blog_pn = #{pn}
 	    ORDER BY
 	    	write_date 
 	</select>
@@ -74,8 +74,8 @@
 				#{writeDate},
 				#{writeUser},
 				#{star},
-				#{usestar},
-				#{usecomment},
+				#{userStar},
+				#{useComment},
 				#{blogAddress}
 			)	
 	</insert>

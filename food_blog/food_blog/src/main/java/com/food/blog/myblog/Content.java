@@ -11,8 +11,8 @@ public class Content extends Category {
 	private String writeDate;
 	private int star;
 
-	private boolean usestar;
-	private boolean usecomment;
+	private boolean useStar;
+	private boolean useComment;
 
 	private String blogAddress;
 
@@ -66,22 +66,6 @@ public class Content extends Category {
 		this.star = star;
 	}
 
-	public boolean isUsestar() {
-		return usestar;
-	}
-
-	public void setUsestar(boolean usestar) {
-		this.usestar = usestar;
-	}
-
-	public boolean isUsecomment() {
-		return usecomment;
-	}
-
-	public void setUsecomment(boolean usecomment) {
-		this.usecomment = usecomment;
-	}
-
 	public String getBlogAddress() {
 		return blogAddress;
 	}
@@ -106,12 +90,28 @@ public class Content extends Category {
 		this.title = title;
 	}
 
+	public boolean isUseStar() {
+		return useStar;
+	}
+
+	public void setUseStar(boolean useStar) {
+		this.useStar = useStar;
+	}
+
+	public boolean isUseComment() {
+		return useComment;
+	}
+
+	public void setUseComment(boolean useComment) {
+		this.useComment = useComment;
+	}
+
 	@Override
 	public String toString() {
 		return "Content [pn=" + pn + ", type=" + type + ", title=" + title
 				+ ", content=" + content + ", writeUser=" + writeUser
-				+ ", writeDate=" + writeDate + ", star=" + star + ", usestar="
-				+ usestar + ", usecomment=" + usecomment + ", blogAddress="
+				+ ", writeDate=" + writeDate + ", star=" + star + ", useStar="
+				+ useStar + ", useComment=" + useComment + ", blogAddress="
 				+ blogAddress + ", commentList=" + commentList + "]";
 	}	
 }
