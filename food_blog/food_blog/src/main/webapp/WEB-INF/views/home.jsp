@@ -22,7 +22,7 @@
 		<div id="content">
 			<img
 				src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSnrAmsRR9Iamgo9U_3AgeuCo5mh4CwTGq6_pOd0TbijPZsVqcI">
-			난 보았느니라
+			난 보았느니라 ${userInfo }
 		</div>
 
  
@@ -34,10 +34,7 @@
 							<c:when test = "${not empty sessionScope.userInfo }">
 								<li><h2>${sessionScope.userInfo.name }님  환영합니다. </h2></li>
 								<li><a href="<c:url value='/login/logout/'/>">로그아웃</a></li>
-								<form:form method="POST" action="./blog/" commandName="userInfo">
-									<form:input type = "hidden" path="userId" />
-									<input type = "submit" value="나의 블로그로 가기"/>
-								</form:form>
+								<li id="my_blog_go_wrap" data-address="${blogInfo.blogAddress }"><input id="my_blog_go" type = "button" value="나의 블로그로 가기"/></li>
 							</c:when>
 							<c:otherwise>
 								<form:form commandName="userInfo">

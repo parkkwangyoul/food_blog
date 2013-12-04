@@ -6,10 +6,15 @@
 <script type="text/javascript">
 	var contextPath = '<c:out value="${cp}" />/';
 	var nowDate = '<fmt:formatDate value="${now}" type="DATE" pattern="yyyyMMddHHmmss" />';
+	
+	if (typeof food == 'undefined') {
+		food = {};
+	}
 </script>
 
 <script src="${cp }/resources/jquery/jquery-1.10.2.min.js" ></script>
 <script src="${cp }/resources/js/arccodion.js" ></script>
+<script src="${cp }/resources/js/blog.js" ></script>
 
 <!-- plug-in -->
 <!-- <script src="${cp}/resources/js/jquery.form.js"></script>

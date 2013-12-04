@@ -39,8 +39,14 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView home( HttpSession session, @ModelAttribute UserInfo userInfo){
 		ModelAndView mav = new ModelAndView();
-
-		mav.addObject("userInfo", userInfo);
+		
+		userInfo = getSession(session);
+		
+		UserBlogInfo blogInfo = new UserBlogInfo(); 
+		
+		blogInfo = myblogService.getBlogByUserId(userInfo.getUserId());
+		
+		mav.addObject("blogInfo", blogInfo);
 		mav.setViewName("home");
 		
 		return mav;
@@ -54,10 +60,9 @@ public class HomeController {
 		
 		if (loginUserInfo.getUserId() != null) {
 			session.setAttribute("userInfo", loginUserInfo);
-			UserBlogInfo blogInfo = myblogService.getBlogByUserId(loginUserInfo.getUserId());
 			
 			logger.debug("Login Success!!");
-			mav.setView(new RedirectView("/food_blog/blog/" + blogInfo.getBlogAddress() + "/"));
+			mav.setView(new RedirectView("/food_blog/"));
 			
 		} else {
 			logger.debug("Login fail because UserInfo is not exist");
@@ -65,5 +70,15 @@ public class HomeController {
 		}
 
 		return mav; 
+	}
+	
+	private UserInfo getSession(HttpSession session) {
+		UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
+		
+		if( userInfo == null || "".equals(userInfo.getUserId()) || userInfo.getUserId() == null)
+			userInfo = new UserInfo();
+			
+		
+		return userInfo;
 	}
 }

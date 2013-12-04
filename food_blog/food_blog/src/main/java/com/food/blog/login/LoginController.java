@@ -35,10 +35,9 @@ public class LoginController {
 	private LoginValidator loginValidator;
 	
 	@RequestMapping(value = "/login/", method = RequestMethod.GET)
-	public ModelAndView login(HttpSession session,
-			HttpServletRequest request, @ModelAttribute UserInfo userInfo) {
+	public ModelAndView login(HttpSession session, @ModelAttribute UserInfo userInfo) {
 		ModelAndView mav = new ModelAndView();
-
+		
 		mav.setViewName("login/login");
 		return mav;
 	}
@@ -53,10 +52,8 @@ public class LoginController {
 		if (loginUserInfo.getUserId() != null) {
 			session.setAttribute("userInfo", loginUserInfo);
 			
-			UserBlogInfo blogInfo = myblogService.getBlogByUserId(loginUserInfo.getUserId());
-			
 			logger.debug("Login Success!!");
-			mav.setView(new RedirectView("/food_blog/blog/" + blogInfo.getBlogAddress() + "/"));
+			mav.setView(new RedirectView("/food_blog/blog/"));
 		} else {
 			logger.debug("Login fail because UserInfo is not exist");
 			mav.setViewName("login/loginFail");

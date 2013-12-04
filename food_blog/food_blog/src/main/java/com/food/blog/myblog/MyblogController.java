@@ -37,6 +37,8 @@ public class MyblogController {
 
 		if (getUserBlogInfo.getBlogAddress() != null) {
 			mav.addObject("blogInfo", getUserBlogInfo);
+			mav.addObject("categoryList", myblogService.getUserCategory(userInfo));
+			
 			mav.setViewName("blog/blog");
 		} else {
 			session.setAttribute("userBlogInfo", getUserBlogInfo);
@@ -56,6 +58,8 @@ public class MyblogController {
 
 		if (getUserBlogInfo.getBlogAddress() != null) {
 			mav.addObject("blogInfo", getUserBlogInfo);
+			mav.addObject("categoryList", myblogService.getUserCategory(userInfo));
+			
 			mav.setViewName("blog/blog");
 		} else {
 			session.setAttribute("userBlogInfo", getUserBlogInfo);
