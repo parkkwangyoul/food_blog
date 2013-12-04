@@ -33,7 +33,7 @@
 				<h2>Categories :</h2>
 				<ul class="accordion">
 					<c:forEach var="category" items="${categoryList }" varStatus="i">
-						<li id="one${i.count }" class="files${i.count }"><a
+						<li id="one${i.count }" class="files${i.count }"><a data-check="${category.categoryId eq categoryId}"
 							href="${cp }/blog/${blogInfo.blogAddress}/${category.categoryId}/">${category.categoryName
 								}</a>
 							<ul class="sub-menu">

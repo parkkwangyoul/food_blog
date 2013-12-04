@@ -85,6 +85,8 @@ public class MyblogController {
 		mav.addObject("contentList",
 				myblogService.getContentList(categoryId, null, blogAddress));
 		mav.addObject("blogInfo", getUserBlogInfo);
+		
+		mav.addObject("categoryId", categoryId);
 
 		mav.setViewName("blog/blog");
 
@@ -105,6 +107,9 @@ public class MyblogController {
 		mav.addObject("contentList",
 				myblogService.getContentList(categoryId, detailId, blogAddress));
 		mav.addObject("blogInfo", getUserBlogInfo);
+		
+		mav.addObject("categoryId", categoryId);
+		mav.addObject("detailId", detailId);
 
 		mav.setViewName("blog/blog");
 
