@@ -4,6 +4,7 @@
 	<resultMap type="Content" id="ContentMap">
 		<result property="pn" column="pn"/>
 		<result property="type" column="type"/>
+		<result property="title" column="title"/>
 		<result property="content" column="content"/>
 		<result property="writeUser" column="write_user"/>
 		<result property="writeDate" column="write_date"/>
@@ -22,23 +23,24 @@
 		<result property="blogPn" column="blog_pn"/>
 	</resultMap>
 	
-	<select id="getContent" resultMap="ContentMap" parameterType="ContentFilter">
+	<select id="getContentList" resultMap="ContentMap" parameterType="ContentFilter">
 	SELECT
-		pn, type, content, write_user, write_date, star, usestar, usecomment, blog_address
-	FORM
+		pn, type, title, content, write_user, write_date, star, usestar, usecomment, blog_address
+	FROM
 		blog_board
 	WHERE
 		blog_address = #{blogAddress}	
-		<if test="categoryId != null or categoryId != ''">
+		<if test="categoryId != null and categoryId != ''">
 		    AND
 		    	category_id = #{categoryId}
 		</if>
-		<if test="detailId != null or detailId != ''">
+		<if test="detailId != null and detailId != ''">
 		   	AND
 		   		detail_id = #{detailId}
 		</if>
 	ORDER BY
-		write_date DESC
+		write_date 
+	DESC
 	</select>
 	
 	<select id="getCommentListByContentId" resultMap="CommentMap">

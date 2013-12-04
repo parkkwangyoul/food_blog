@@ -3,18 +3,18 @@ package com.food.blog.myblog;
 import java.util.List;
 
 public class Category {
-	private String userId;
+	private String blogAddress;
 	private String categoryId;
 	private String categoryName;
 
 	private List<CategoryDetail> categoryDetailList;
 
-	public String getUserId() {
-		return userId;
+	public String getBlogAddress() {
+		return blogAddress;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setBlogAddress(String blogAddress) {
+		this.blogAddress = blogAddress;
 	}
 
 	public String getCategoryId() {
@@ -43,7 +43,7 @@ public class Category {
 
 	@Override
 	public String toString() {
-		return "Category [userId=" + userId + ", categoryId=" + categoryId
+		return "Category [userId=" + blogAddress + ", categoryId=" + categoryId
 				+ ", categoryName=" + categoryName + ", categoryDetailList="
 				+ categoryDetailList + "]";
 	}

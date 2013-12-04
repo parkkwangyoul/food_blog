@@ -2,17 +2,18 @@ package com.food.blog.myblog;
 
 import java.util.List;
 
-public class Content extends Category {	
+public class Content extends Category {
 	private int pn;
 	private int type;
+	private String title;
 	private String content;
 	private String writeUser;
 	private String writeDate;
 	private int star;
-	
+
 	private boolean usestar;
 	private boolean usecomment;
-	
+
 	private String blogAddress;
 
 	private List<Comment> commentList;
@@ -97,13 +98,20 @@ public class Content extends Category {
 		this.commentList = commentList;
 	}
 
-	@Override
-	public String toString() {
-		return "Content [pn=" + pn + ", type=" + type + ", content=" + content
-				+ ", writeUser=" + writeUser + ", writeDate=" + writeDate
-				+ ", star=" + star + ", usestar=" + usestar + ", usecomment="
-				+ usecomment + ", blogAddress=" + blogAddress
-				+ ", commentList=" + commentList + "]";
+	public String getTitle() {
+		return title;
 	}
 
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	@Override
+	public String toString() {
+		return "Content [pn=" + pn + ", type=" + type + ", title=" + title
+				+ ", content=" + content + ", writeUser=" + writeUser
+				+ ", writeDate=" + writeDate + ", star=" + star + ", usestar="
+				+ usestar + ", usecomment=" + usecomment + ", blogAddress="
+				+ blogAddress + ", commentList=" + commentList + "]";
+	}	
 }

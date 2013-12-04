@@ -7,6 +7,10 @@
 				<h2>
 					<a href="#">SubjectName</a>
 				</h2>
-				This is contents
+				<div>
+					<c:if test="${contentList == '[]' or contentList == null }">
+						
+					</c:if>
+				</div>
 			</div>
 <%@ include file="../layout/footer.jspf" %>
