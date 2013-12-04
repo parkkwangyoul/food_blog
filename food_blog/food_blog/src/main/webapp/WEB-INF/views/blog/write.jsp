@@ -20,11 +20,11 @@
 			<td><form:textarea path="content"/></td>			
 		</tr>
 		<tr>
-			<th>체크박스로 인트해줄수있나 ㅠ<br>별점 할 체크박스</th>
+			<th><form:checkbox path="usestar"/>별 사용</th>
 			<td><form:textarea path="star"/>별점</td>
 		</tr>
 		<tr>
-			<th>댓글은 추후에 ^^</th>
+			<th><form:checkbox path="usecomment"/>댓글 사용</th>
 		</tr>
 	</table>
 	<br>

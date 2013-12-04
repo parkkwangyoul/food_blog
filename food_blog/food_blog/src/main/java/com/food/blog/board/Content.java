@@ -7,8 +7,8 @@ public class Content {
 	private String writeUser;
 	private String writeDate;
 	private int star;
-	private int usestar;//0->미사용, 1-> 사용
-	private int usecomment;//0->미사용, 1-> 사용
+	private boolean usestar;
+	private boolean usecomment;
 	private String blogAddress;
 	
 	public int getPn() {
@@ -47,16 +47,17 @@ public class Content {
 	public void setStar(int star) {
 		this.star = star;
 	}
-	public int getUsestar() {
+
+	public boolean isUsestar() {
 		return usestar;
 	}
-	public void setUsestar(int usestar) {
+	public void setUsestar(boolean usestar) {
 		this.usestar = usestar;
 	}
-	public int getUsecomment() {
+	public boolean isUsecomment() {
 		return usecomment;
 	}
-	public void setUsecomment(int usecomment) {
+	public void setUsecomment(boolean usecomment) {
 		this.usecomment = usecomment;
 	}
 	public String getBlogAddress() {
