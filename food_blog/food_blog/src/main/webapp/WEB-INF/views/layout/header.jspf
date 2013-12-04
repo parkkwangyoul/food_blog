@@ -34,13 +34,13 @@
 				<ul class="accordion">
 					<c:forEach var="category" items="${categoryList }" varStatus="i">
 						<li id="one${i.count }" class="files${i.count }"><a
-							href="${cp }/${category.categoryId}/">${category.categoryName
+							href="${cp }/blog/${blogInfo.blogAddress}/${category.categoryId}/">${category.categoryName
 								}</a>
 							<ul class="sub-menu">
 								<c:forEach var="detail" items="${category.categoryDetailList }"
 									varStatus="j">
 									<li><a
-										href="${cp }/${category.categoryId}/${detail.detailLinkName}/"><em>${j.count
+										href="${cp }/blog/${blogInfo.blogAddress}/${category.categoryId}/${detail.detailLinkName}/"><em>${j.count
 												< 10 ? '0' : j.count }${j.count < 10 ? j.count : '' }</em>${detail.detailName
 											}</a></li>
 								</c:forEach>
