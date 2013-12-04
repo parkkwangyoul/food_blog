@@ -27,21 +27,18 @@
 						<ul class="gi-login-loginForm">
 							<c:choose>
 								<c:when test = "${not empty sessionScope.userInfo }">
-									<li><h2>${sessionScope.userInfo.name }님  환영합니다. </h2></li>
-									<li><a href="<c:url value='/login/logout/'/>">로그아웃</a></li>
-									<form:form method="POST" action="./blog/" commandName="userInfo">
-										<form:input type = "hidden" path="userId" />
-										<input type = "submit" value="나의 블로그로 가기"/>
-									</form:form>
-								</c:when>
-								<c:otherwise>
-									<form:form commandName="userInfo">
-										<li><form:input path="userId" value="아이디" /></li>
-										<li><form:password path="password" value="password" /></li>
-										<li><input type="submit" value="로그인" /></li>
-										<br>
-										<li><a href="<c:url value='/join/' />">회원가입</a></li>
-									</form:form>
+								<li><h2>${sessionScope.userInfo.name }님  환영합니다. </h2></li>
+								<li><a href="<c:url value='/login/logout/'/>">로그아웃</a></li>
+								<li id="my_blog_go_wrap" data-address="${blogInfo.blogAddress }"><input id="my_blog_go" type = "button" value="나의 블로그로 가기"/></li>
+							</c:when>
+							<c:otherwise>
+								<form:form commandName="userInfo">
+									<li><form:input path="userId" value="아이디" /></li>
+									<li><form:password path="password" value="password" /></li>
+									<li><input type="submit" value="로그인" /></li>
+									<br>
+									<li><a href="<c:url value='/join/' />">회원가입</a></li>
+								</form:form>
 								</c:otherwise>
 							</c:choose>
 						</ul>
