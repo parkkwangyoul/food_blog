@@ -10,6 +10,7 @@
 <html>
 <head>
 <title>Tasty_Home</title>
+<link rel="stylesheet" type="text/css" href="homeStyle.css" media="screen" />
 </head>
 <body>
  	<div id="homeContainer">
