@@ -3,8 +3,6 @@ package com.food.blog;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -14,8 +12,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
-
-import com.food.blog.login.UserInfo;
 
 @Aspect
 @Component
@@ -53,28 +49,6 @@ public class ControllerAspect {
 				}
 			}
 			
-			HttpSession session; 
-			UserInfo user;
-
-			for (int i = 0; i < param.length; i++) {
-				if (newParmSkip[i] == false) {
-					if (param[i] != null) {
-						if (param[i].getClass() == HttpServletRequest.class){
-							HttpServletRequest request = (HttpServletRequest)param[i];
-							session = request.getSession();
-							user = (UserInfo) session.getAttribute("userInfo");
-						} else {
-							user = new UserInfo();
-						}
-						
-						if (param[i].getClass() == UserInfo.class) {
-							param[i] = user;
-						}
-						logger.debug("Param Class : " + param[i].getClass());
-					}
-				}
-			}
-
 			return joinPoint.proceed(param);
 		} finally {
 			long finish = System.currentTimeMillis();

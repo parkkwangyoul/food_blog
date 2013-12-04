@@ -1,7 +1,4 @@
-package com.food.blog.board;
-
-import java.text.DateFormat;
-import java.util.Date;
+package com.food.blog.myblog.board;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -14,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.food.blog.login.UserInfo;
+import com.food.blog.myblog.Content;
 
 @Controller
 public class BoardController {

@@ -7,6 +7,20 @@
 		<result property="type" column="type"/>
 	</resultMap>
 	
+	<resultMap type="Category" id="CategoryMap"  >
+		<result property="userId" column="user_id" />
+		<result property="categoryId" column="category_id" />
+		<result property="categoryName" column="category_name" />
+		<collection property="categoryDetailList" column="category_id" javaType="ArrayList" ofType="CategoryDetail" select="getUserCategoryDetailByCategoryId" />
+	</resultMap>
+	
+	<resultMap type="CategoryDetail" id="CategoryDetailMap">
+	    <result property="id" column="id"/>
+	    <result property="detailId" column="detail_id"/>
+	    <result property="detailName" column="detail_name"/>
+	    <result property="detailLinkName" column="detail_link_name"/>	    
+	</resultMap>
+	
 	<select id="getBlogInfo" resultMap="UserBlogInfoMap" parameterType="String">
 	SELECT 
 		blog_address, blog_name, type
@@ -23,6 +37,38 @@
 		user_blog
 	WHERE
 		blog_addres = #{blogAddress}
+	</select>
+	
+	<select id="getUserCategory" parameterType="UserInfo" resultMap="CategoryMap">
+	    SELECT
+	    	user_id,
+	    	category_id,
+	    	category_name
+	   	FROM
+	   		user_category
+	   	WHERE
+	   		user_id = #{userId}	    
+	</select>
+	
+	<select id="getUserCategoryDetailByCategoryId" resultMap="CategoryDetailMap">
+	    SELECT
+	    	id,
+	    	detail_id,
+	    	detail_name,
+	    	detail_link_name
+	    FROM
+	    	user_category_detail
+	    WHERE
+	    	id = #{categoryId}	    
+	</select>
+	
+	<select id="getBlogByUserId" parameterType="String" resultMap="UserBlogInfoMap">
+		SELECT 
+			blog_address, blog_name, type
+		FROM
+			user_blog
+		WHERE
+			blog_address = (select blog_address from users where user_id = #{value})	    		    
 	</select>
 	
 	<insert id="join" parameterType="UserBlogInfo">

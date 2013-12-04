@@ -1,9 +1,11 @@
-package com.food.blog.board;
+package com.food.blog.myblog.board;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.food.blog.myblog.Content;
 
 @Service
 public class BoardService {

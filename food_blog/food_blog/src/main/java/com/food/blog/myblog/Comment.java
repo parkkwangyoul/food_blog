@@ -1,4 +1,4 @@
-package com.food.blog.board;
+package com.food.blog.myblog;
 
 public class Comment {
 	private int pn;

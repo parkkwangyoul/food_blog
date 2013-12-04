@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.food.blog.myblog.MyblogService;
+import com.food.blog.myblog.UserBlogInfo;
+
 
 @Controller
 public class LoginController {
@@ -24,6 +27,9 @@ public class LoginController {
 
 	@Resource
 	private LoginService loginService;
+	
+	@Resource
+	private MyblogService myblogService;
 	
 	@Resource
 	private LoginValidator loginValidator;
@@ -43,14 +49,14 @@ public class LoginController {
 			HttpServletRequest request, @ModelAttribute UserInfo userInfo) {
 		ModelAndView mav = new ModelAndView();
 		UserInfo loginUserInfo = loginService.login(userInfo);
-		
-		System.out.println(loginUserInfo.toString());
 
 		if (loginUserInfo.getUserId() != null) {
 			session.setAttribute("userInfo", loginUserInfo);
 			
+			UserBlogInfo blogInfo = myblogService.getBlogByUserId(loginUserInfo.getUserId());
+			
 			logger.debug("Login Success!!");
-			mav.setView(new RedirectView("/food_blog/"));
+			mav.setView(new RedirectView("/food_blog/blog/" + blogInfo.getBlogAddress() + "/"));
 		} else {
 			logger.debug("Login fail because UserInfo is not exist");
 			mav.setViewName("login/loginFail");
