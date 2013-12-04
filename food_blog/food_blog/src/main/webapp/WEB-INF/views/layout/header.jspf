@@ -34,7 +34,7 @@
 				<ul class="accordion">
 					<c:forEach var="category" items="${categoryList }" varStatus="i">
 						<li id="one${i.count }" class="files${i.count }"><a
-							href="${cp }/${category.categoryId}/${category.categoryDetailList[0].detailLinkName}/">${category.categoryName
+							href="${cp }/${category.categoryId}/">${category.categoryName
 								}</a>
 							<ul class="sub-menu">
 								<c:forEach var="detail" items="${category.categoryDetailList }"

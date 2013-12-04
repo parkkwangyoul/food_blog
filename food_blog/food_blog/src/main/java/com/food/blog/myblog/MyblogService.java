@@ -33,6 +33,17 @@ public class MyblogService {
 		myblogDao.join(userBlogInfo);
 	}
 	
+	public void join(String blogAddress, String name){
+		UserBlogInfo userBlogInfo = new UserBlogInfo();
+		String temp = name+"의 블로그";
+		
+		userBlogInfo.setBlogAddress(blogAddress);
+		userBlogInfo.setBlogName(temp);
+		userBlogInfo.setType(1);
+		
+		myblogDao.join(userBlogInfo);		
+	}
+	
 	public boolean checkExistBlog(String blogAddress){
 		int blogCheck = myblogDao.blogCheck(blogAddress);
 		System.out.println("MyBlogService::"+blogCheck);
@@ -43,9 +54,9 @@ public class MyblogService {
 		}
 	}
 
-	public List<Category> getUserCategory(UserInfo userInfo) {
+	public List<Category> getUserCategory(String blogAddress) {
 		
-		List<Category> list = myblogDao.getUserCategory(userInfo);
+		List<Category> list = myblogDao.getUserCategory(blogAddress);
 		
 		return list;
 	}

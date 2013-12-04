@@ -107,6 +107,7 @@ public class LoginController {
 		model.put(BindingResult.class.getName() + ".loginValidator", result);
 		if(!result.hasErrors()){		
 			loginService.join(userInfo);
+			myblogService.join(userInfo.getBlogAddress(), userInfo.getName());
 			mav.setView(new RedirectView("/food_blog/"));
 		} else {			
 			

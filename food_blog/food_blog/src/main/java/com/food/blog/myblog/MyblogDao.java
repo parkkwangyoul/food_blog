@@ -22,8 +22,8 @@ public class MyblogDao extends SqlSessionDaoSupport {
 		return (Integer) getSqlSession().selectOne("myblogInfoMapper.blogCheck", blogAddress);
 	}
 
-	public List<Category> getUserCategory(UserInfo userInfo) {
-		return getSqlSession().selectList("myblogInfoMapper.getUserCategory", userInfo);
+	public List<Category> getUserCategory(String blogAddress) {
+		return getSqlSession().selectList("myblogInfoMapper.getUserCategory", blogAddress);
 	}
 
 	public List<Content> getContentList(ContentFilter contentFilter) {

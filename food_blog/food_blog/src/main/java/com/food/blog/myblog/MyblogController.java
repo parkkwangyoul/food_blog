@@ -37,7 +37,9 @@ public class MyblogController {
 
 		if (getUserBlogInfo.getBlogAddress() != null) {
 			mav.addObject("blogInfo", getUserBlogInfo);
-			mav.addObject("categoryList", myblogService.getUserCategory(userInfo));
+			mav.addObject("contentList",
+					myblogService.getContentList(null, null, blogAddress));
+			mav.addObject("categoryList", myblogService.getUserCategory(blogAddress));
 			
 			mav.setViewName("blog/blog");
 		} else {
@@ -58,13 +60,34 @@ public class MyblogController {
 
 		if (getUserBlogInfo.getBlogAddress() != null) {
 			mav.addObject("blogInfo", getUserBlogInfo);
-			mav.addObject("categoryList", myblogService.getUserCategory(userInfo));
+			mav.addObject("contentList",
+					myblogService.getContentList(null, null, blogAddress));
+			mav.addObject("categoryList", myblogService.getUserCategory(blogAddress));
 			
 			mav.setViewName("blog/blog");
 		} else {
 			session.setAttribute("userBlogInfo", getUserBlogInfo);
 			mav.setView(new RedirectView("/food_blog/"));
 		}
+		return mav;
+	}	
+	
+	@RequestMapping(value = "/{blogAddress}/{categoryId}", method = RequestMethod.GET)
+	public ModelAndView blogCategory(HttpSession session,
+			@ModelAttribute UserInfo userInfo,
+			@PathVariable String blogAddress, @PathVariable String categoryId) {
+		
+		ModelAndView mav = new ModelAndView();
+		userInfo = getSession(session);
+		UserBlogInfo getUserBlogInfo = myblogService.getBlog(blogAddress);
+
+		mav.addObject("categoryList", myblogService.getUserCategory(blogAddress));
+		mav.addObject("contentList",
+				myblogService.getContentList(categoryId, null, blogAddress));
+		mav.addObject("blogInfo", getUserBlogInfo);
+
+		mav.setViewName("blog/blog");
+
 		return mav;
 	}
 
@@ -78,7 +101,7 @@ public class MyblogController {
 		userInfo = getSession(session);
 		UserBlogInfo getUserBlogInfo = myblogService.getBlog(blogAddress);
 
-		mav.addObject("categoryList", myblogService.getUserCategory(userInfo));
+		mav.addObject("categoryList", myblogService.getUserCategory(blogAddress));
 		mav.addObject("contentList",
 				myblogService.getContentList(categoryId, detailId, blogAddress));
 		mav.addObject("blogInfo", getUserBlogInfo);
