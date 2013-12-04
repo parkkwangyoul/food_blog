@@ -43,9 +43,9 @@ public class MyblogService {
 		}
 	}
 
-	public List<Category> getUserCategory(UserInfo userInfo) {
+	public List<Category> getUserCategory(String blogAddress) {
 		
-		List<Category> list = myblogDao.getUserCategory(userInfo);
+		List<Category> list = myblogDao.getUserCategory(blogAddress);
 		
 		return list;
 	}

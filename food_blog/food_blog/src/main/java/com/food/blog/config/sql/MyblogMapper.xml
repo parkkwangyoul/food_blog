@@ -8,7 +8,7 @@
 	</resultMap>
 	
 	<resultMap type="Category" id="CategoryMap"  >
-		<result property="userId" column="user_id" />
+		<result property="blogAddress" column="blog_address" />
 		<result property="categoryId" column="category_id" />
 		<result property="categoryName" column="category_name" />
 		<collection property="categoryDetailList" column="category_id" javaType="ArrayList" ofType="CategoryDetail" select="getUserCategoryDetailByCategoryId" />
@@ -39,15 +39,15 @@
 		blog_addres = #{blogAddress}
 	</select>
 	
-	<select id="getUserCategory" parameterType="UserInfo" resultMap="CategoryMap">
+	<select id="getUserCategory" parameterType="String" resultMap="CategoryMap">
 	    SELECT
-	    	user_id,
+	    	blog_address,
 	    	category_id,
 	    	category_name
 	   	FROM
 	   		user_category
 	   	WHERE
-	   		user_id = #{userId}	    
+	   		blog_address = #{value}	    
 	</select>
 	
 	<select id="getUserCategoryDetailByCategoryId" resultMap="CategoryDetailMap">
