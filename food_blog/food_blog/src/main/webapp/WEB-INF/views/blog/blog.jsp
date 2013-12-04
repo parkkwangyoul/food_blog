@@ -41,31 +41,16 @@
 					</c:choose>
 				<h2>Categories :</h2>
 				<ul class="accordion">
-					<li id="one" class="files">
-						<a href="#one">2013 Dec<span>51</span></a>
-						<ul class="sub-menu">
-							<li><a href="#"><em>01</em>연무동<span>20</span></a></li>
-							<li><a href="#"><em>02</em>영화동<span>11</span></a></li>
-							<li><a href="#"><em>03</em>병점동<span>25</span></a></li>
-						</ul>
-					</li>
-					<li id="two" class="mail">
-						<a href="#one">2013 Nov<span>10</span></a>
-						<ul class="sub-menu">
-							<li><a href="#"><em>01</em>불광동<span>2</span></a></li>
-							<li><a href="#"><em>02</em>연신내<span>5</span></a></li>
-							<li><a href="#"><em>03</em>녹번동<span>3</span></a></li>
-						</ul>
-					</li>
-					<li id="three" class="cloud">
-						<a href="#one">2013 Oct<span>38</span></a>
-						<ul class="sub-menu">
-							<li><a href="#"><em>01</em>천안<span>12</span></a></li>
-							<li><a href="#"><em>02</em>인계동<span>5</span></a></li>
-							<li><a href="#"><em>03</em>팔달문<span>13</span></a></li>
-							<li><a href="#"><em>03</em>장안문<span>8</span></a></li>
-						</ul>
-					</li>
+					<c:forEach var="category" items="${categoryList }" varStatus="i">
+						<li id="one${i.count }" class="files${i.count }">
+							<a href="${cp }/${category.categoryId}/${category.categoryDetailList[0].detailLinkName}/">${category.categoryName }</a>
+							<ul class="sub-menu">
+								<c:forEach var="detail" items="${category.categoryDetailList }" varStatus="j">
+									<li><a href="${cp }/${category.categoryId}/${detail.detailLinkName}/"><em>${j.count < 10 ? '0' : j.count }${j.count < 10 ? j.count : '' }</em>${detail.detailName }</a></li>
+								</c:forEach>
+							</ul>
+						</li>
+					</c:forEach>
 				</ul>
 			</div>
 			<div style="clear: both;"></div>

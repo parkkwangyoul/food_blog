@@ -11,6 +11,7 @@
 		<result property="usestar" column="usestar"/>
 		<result property="usecomment" column="usecomment"/>
 		<result property="blogAddress" column="blog_address"/>
+		<collection property="commentList" column="pn" javaType="java.util.ArrayList" ofType="Comment" select="getCommentListByContentId" />
 	</resultMap>
 	
 	<resultMap type="Comment" id="CommentMap">
@@ -21,13 +22,34 @@
 		<result property="blogPn" column="blog_pn"/>
 	</resultMap>
 	
-	<select id="getContent" resultMap="ContentMap" parameterType="String">
+	<select id="getContent" resultMap="ContentMap" parameterType="ContentFilter">
 	SELECT
 		pn, type, content, write_user, write_date, star, usestar, usecomment, blog_address
 	FORM
 		blog_board
-	where
+	WHERE
 		blog_address = #{blogAddress}	
+		<if test="categoryId != null or categoryId != ''">
+		    AND
+		    	category_id = #{categoryId}
+		</if>
+		<if test="detailId != null or detailId != ''">
+		   	AND
+		   		detail_id = #{detailId}
+		</if>
+	ORDER BY
+		write_date DESC
+	</select>
+	
+	<select id="getCommentListByContentId" resultMap="CommentMap">
+	    SELECT
+	    	pn, content, write_user, write_date, blog_pn
+	    FROM
+	    	blog_board_comment
+	    WHERE
+	    	blog_pn = ${pn}
+	    ORDER BY
+	    	write_date 
 	</select>
 	
 	<insert id="joinContent" parameterType="Content">

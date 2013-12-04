@@ -4,8 +4,11 @@
     <typeAliases>
     	<typeAlias alias="UserInfo" type="com.food.blog.login.UserInfo" /> 
     	<typeAlias alias="UserBlogInfo" type="com.food.blog.myblog.UserBlogInfo"/>
-    	<typeAlias alias="Comment" type="com.food.blog.board.Comment"/>
-    	<typeAlias alias="Content" type="com.food.blog.board.Content"/>
+    	<typeAlias alias="Comment" type="com.food.blog.myblog.Comment"/>
+    	<typeAlias alias="Content" type="com.food.blog.myblog.Content"/>
+    	<typeAlias alias="ContentFilter" type="com.food.blog.myblog.ContentFilter"/>
+    	<typeAlias alias="Category" type="com.food.blog.myblog.Category"/>
+    	<typeAlias alias="CategoryDetail" type="com.food.blog.myblog.CategoryDetail"/>
     </typeAliases>
 
 </configuration>

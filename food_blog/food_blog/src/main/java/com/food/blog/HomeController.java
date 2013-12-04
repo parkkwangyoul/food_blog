@@ -15,6 +15,8 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.food.blog.login.LoginService;
 import com.food.blog.login.UserInfo;
+import com.food.blog.myblog.MyblogService;
+import com.food.blog.myblog.UserBlogInfo;
 
 /**
  * Handles requests for the application home page.
@@ -31,6 +33,9 @@ public class HomeController {
 	@Resource
 	private LoginService loginService;
 	
+	@Resource
+	private MyblogService myblogService;
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView home( HttpSession session, @ModelAttribute UserInfo userInfo){
 		ModelAndView mav = new ModelAndView();
@@ -46,15 +51,14 @@ public class HomeController {
 		ModelAndView mav = new ModelAndView();
 		System.out.println("Before Connect DB");
 		UserInfo loginUserInfo = loginService.login(userInfo);
-		session.setAttribute("abc", loginUserInfo);
-		
-		System.out.println(loginUserInfo.toString());
 		
 		if (loginUserInfo.getUserId() != null) {
 			session.setAttribute("userInfo", loginUserInfo);
+			UserBlogInfo blogInfo = myblogService.getBlogByUserId(loginUserInfo.getUserId());
 			
 			logger.debug("Login Success!!");
-			mav.setView(new RedirectView("/food_blog/"));
+			mav.setView(new RedirectView("/food_blog/blog/" + blogInfo.getBlogAddress() + "/"));
+			
 		} else {
 			logger.debug("Login fail because UserInfo is not exist");
 			mav.setViewName("login/loginFail");

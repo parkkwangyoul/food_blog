@@ -1,9 +1,15 @@
 package com.food.blog.myblog;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.food.blog.login.UserInfo;
 
 @Service
 public class MyblogService {
@@ -35,6 +41,26 @@ public class MyblogService {
 		} else {
 			return false;
 		}
+	}
+
+	public List<Category> getUserCategory(UserInfo userInfo) {
+		
+		List<Category> list = myblogDao.getUserCategory(userInfo);
+		
+		return list;
+	}
+
+	public List<Content> getContentList(String categoryId, String detailId, String blogAddress) {
+		ContentFilter contentFilter = new ContentFilter(categoryId, detailId, blogAddress);
+		
+		List<Content> list = myblogDao.getContentList(contentFilter);
+		
+		return list;
+	}
+
+	public UserBlogInfo getBlogByUserId(String userId) {
+		
+		return myblogDao.getBlogByUserId(userId);		
 	}
 
 }
