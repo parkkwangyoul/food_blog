@@ -34,6 +34,9 @@ public class LoginController {
 	@Resource
 	private LoginValidator loginValidator;
 	
+	@Resource
+	private modifyValidator modifyValidator;
+	
 	@RequestMapping(value = "/login/", method = RequestMethod.GET)
 	public ModelAndView login(HttpSession session, @ModelAttribute UserInfo userInfo) {
 		ModelAndView mav = new ModelAndView();
@@ -116,5 +119,53 @@ public class LoginController {
 		}
 		
 		return mav; 
+	}
+	/*
+	 * 수정하기 
+	 */
+	@RequestMapping(value = "/modify/", method = RequestMethod.GET)
+	public ModelAndView modify(HttpSession session,
+			HttpServletRequest request, @ModelAttribute UserInfo userInfo) {
+		ModelAndView mav = new ModelAndView();
+		UserBlogInfo userBlogInfo;
+		userInfo = (UserInfo) session.getAttribute("userInfo");
+		
+		userBlogInfo = myblogService.getBlog(userInfo.getBlogAddress());
+		
+		System.out.println(userBlogInfo);
+		System.out.println(userInfo);
+		session.setAttribute("UserBlogInfo", userBlogInfo);
+		
+
+		mav.setViewName("login/modify");
+	
+
+		return mav;
+	}
+	/*
+	 * 수정 양식 submit
+	 */	
+	@RequestMapping(value = "/modify/", method = RequestMethod.POST)
+	public ModelAndView modifySubmit(HttpSession session, @ModelAttribute UserInfo userInfo,
+			BindingResult result) {
+		ModelAndView mav = new ModelAndView();
+
+		modifyValidator.validate(userInfo, result);
+		
+		if(!result.hasErrors()){
+			System.out.println(userInfo.toString());
+			session.setAttribute("userInfo", userInfo);
+			loginService.userUpate(userInfo);
+			myblogService.updateUserBlogInfo(userInfo.getBlogAddress(), userInfo.getName(), userInfo.getType(), userInfo.getBeforeBlogAddress());
+			mav.setView(new RedirectView("/food_blog/"));
+		} else {
+			System.out.println("수정안됨");			
+			mav.setView(new RedirectView("/food_blog/modify/"));
+		}
+		
+
+	
+
+		return mav;
 	}
 }

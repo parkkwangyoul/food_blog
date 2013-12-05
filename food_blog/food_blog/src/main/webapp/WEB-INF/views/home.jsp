@@ -30,6 +30,7 @@
 								<li><h2>${sessionScope.userInfo.name }님  환영합니다. </h2></li>
 								<li><a href="<c:url value='/login/logout/'/>">로그아웃</a></li>
 								<li id="my_blog_go_wrap" data-address="${blogInfo.blogAddress }"><input id="my_blog_go" type = "button" value="나의 블로그로 가기"/></li>
+								<li><a href="<c:url value='/modify/'/>">수정하기</a></li>
 							</c:when>
 							<c:otherwise>
 								<form:form commandName="userInfo">

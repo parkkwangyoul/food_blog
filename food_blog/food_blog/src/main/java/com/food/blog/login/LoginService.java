@@ -54,5 +54,9 @@ public class LoginService {
 		
 	}
 	
+	public void userUpate(UserInfo userInfo){
+		loginDao.update(userInfo);
+	}
+	
 	
 }

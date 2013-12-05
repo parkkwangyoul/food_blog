@@ -10,11 +10,11 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 @Component
-public class LoginValidator implements Validator {
-
-	@Resource
+public class modifyValidator implements Validator{
+	
+	@Resource 
 	private LoginService loginService;
-
+	
 	@Override
 	public boolean supports(Class<?> clazz) {
 		return UserInfo.class.isAssignableFrom(clazz);
@@ -24,10 +24,12 @@ public class LoginValidator implements Validator {
 	public void validate(Object target, Errors errors) {
 		UserInfo userInfo = (UserInfo) target;
 		String userId = userInfo.getUserId();
+		String name = userInfo.getName();
 		String password = userInfo.getPassword();
 		String confirmPassword = userInfo.getConfirmPassword();
 		String emailAddress = userInfo.getEmailAddress();
 		String blogAddress = userInfo.getBlogAddress();
+		String beforeBlogAddress = userInfo.getBeforeBlogAddress();
 
 
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userId", "create.userId.emptyOrError");
@@ -36,8 +38,8 @@ public class LoginValidator implements Validator {
 			errors.rejectValue("userId", "create.userId.emptyOrError");
 		}
 		
-		if (loginService.checkExistUserId(userInfo)){
-			errors.rejectValue("userId", "create.userId.existUserId");
+		if (name.length() > 20) { 
+			errors.rejectValue("name", "create.userId.emptyOrError");
 		}
 		
 		if (password.length() < 8 || password.length() > 16) {
@@ -51,7 +53,7 @@ public class LoginValidator implements Validator {
 
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "emailAddress", "create.emailAddress.empty");
 		
-		if(loginService.checkExistBlogAddress(userInfo)){
+		if(loginService.checkExistBlogAddress(userInfo) && !blogAddress.equals(beforeBlogAddress)){
 			errors.rejectValue("blogAddress", "create.blogAddress.emptyOrError");
 		}
 
@@ -66,5 +68,6 @@ public class LoginValidator implements Validator {
 		if(blogAddress.length() > 20){
 			errors.rejectValue("blogAddress", "create.blogAddress.emptyOrError");
 		}
-	}
+		
+	}	
 }

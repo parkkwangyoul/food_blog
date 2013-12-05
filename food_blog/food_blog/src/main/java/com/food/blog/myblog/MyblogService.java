@@ -73,5 +73,18 @@ public class MyblogService {
 		
 		return myblogDao.getBlogByUserId(userId);		
 	}
+	
+	public void updateUserBlogInfo(String blogAddress, String name, Integer type, String beforeBlogAddress){
+		UserBlogInfo temp = new UserBlogInfo();
+		String tp = name+"의 블로그";
+		
+		temp.setBlogAddress(blogAddress);
+		temp.setBlogName(tp);
+		temp.setType(type);
+		temp.setBeforeBlogAddress(beforeBlogAddress);
+		
+		
+		myblogDao.update(temp);
+	}
 
 }

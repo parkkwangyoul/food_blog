@@ -7,8 +7,21 @@ public class UserInfo {
 	private String name;
 	private String password;
 	private String confirmPassword;
-
+	private String emailAddress;
+	private String blogAddress;
+	
+	private Integer type;
+	private String beforeBlogAddress;
+	
 	private UserBlogInfo blogInfo;
+
+	public Integer getType() {
+		return type;
+	}
+
+	public void setType(Integer type) {
+		this.type = type;
+	}
 
 	public String getConfirmPassword() {
 		return confirmPassword;
@@ -17,9 +30,6 @@ public class UserInfo {
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
 	}
-
-	private String emailAddress;
-	private String blogAddress;
 
 	public String getUserId() {
 		return userId;
@@ -61,12 +71,12 @@ public class UserInfo {
 		this.blogAddress = blogAddress;
 	}
 
-	@Override
-	public String toString() {
-		return "UserInfo [userId=" + userId + ", name=" + name + ", password="
-				+ password + ", confirmPassword=" + confirmPassword
-				+ ", blogInfo=" + blogInfo + ", emailAddress=" + emailAddress
-				+ ", blogAddress=" + blogAddress + "]";
+	public String getBeforeBlogAddress() {
+		return beforeBlogAddress;
+	}
+
+	public void setBeforeBlogAddress(String beforeBlogAddress) {
+		this.beforeBlogAddress = beforeBlogAddress;
 	}
 
 	public UserBlogInfo getBlogInfo() {
@@ -76,4 +86,15 @@ public class UserInfo {
 	public void setBlogInfo(UserBlogInfo blogInfo) {
 		this.blogInfo = blogInfo;
 	}
+
+	@Override
+	public String toString() {
+		return "UserInfo [userId=" + userId + ", name=" + name + ", password="
+				+ password + ", confirmPassword=" + confirmPassword
+				+ ", emailAddress=" + emailAddress + ", blogAddress="
+				+ blogAddress + ", type=" + type + ", beforeBlogAddress="
+				+ beforeBlogAddress + ", blogInfo=" + blogInfo + "]";
+	}
+	
+
 }
