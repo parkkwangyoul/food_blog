@@ -83,6 +83,15 @@
 	    	seq = #{value} 	    
 	</select>
 	
+	<select id="getComment" parameterType="Comment" resultMap="CommentMap">
+	    SELECT
+	    	pn, content, write_date, write_user, blog_pn
+	    FROM
+	    	blog_board_comment
+	    WHERE
+	    	pn = #{pn}	    
+	</select>
+	
 	<insert id="joinContent" parameterType="Content">
 	INSERT INTO
 			blog_board
@@ -144,5 +153,19 @@
 	    	)
 	</insert>
 
+	<insert id="addComment" parameterType="Comment">
+	    INSERT INTO
+	    	blog_board_comment
+	    	(
+	    		content, write_date, write_user, blog_pn
+	    	)
+	    VALUES
+	    (
+	    	#{content}, SYSDATE(), #{writeUser}, #{blogPn}
+	    )
+	    <selectKey keyProperty="pn" resultType="Integer">
+	        SELECT LAST_INSERT_ID()        
+	    </selectKey>
+	</insert>
 
 </mapper>

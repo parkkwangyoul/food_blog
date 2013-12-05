@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+import com.food.blog.myblog.Comment;
 import com.food.blog.myblog.Content;
 import com.food.blog.myblog.ContentAttachment;
 import com.food.blog.upload.UploadService;
@@ -87,6 +88,12 @@ public class BoardService {
 
 	public ContentAttachment getAttachment(Integer seq) {
 		return boardDao.getAttchment(seq);
+	}
+
+	public Comment addComment(Comment comment) {
+		boardDao.addComment(comment);
+		
+		return boardDao.getComment(comment); 
 	}
 	
 	

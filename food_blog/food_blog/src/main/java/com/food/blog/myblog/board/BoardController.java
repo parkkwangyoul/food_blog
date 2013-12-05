@@ -1,6 +1,10 @@
 package com.food.blog.myblog.board;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -9,13 +13,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.food.blog.config.servlet.ResourceNotFoundException;
 import com.food.blog.login.UserInfo;
+import com.food.blog.myblog.Category;
+import com.food.blog.myblog.CategoryDetail;
+import com.food.blog.myblog.Comment;
 import com.food.blog.myblog.Content;
 import com.food.blog.myblog.ContentAttachment;
 import com.food.blog.myblog.MyblogService;
@@ -41,8 +50,7 @@ public class BoardController {
 		
 		UserBlogInfo getUserBlogInfo = myblogService.getBlog(blogAddress);
 
-		mav.addObject("categoryList",
-				myblogService.getUserCategory(blogAddress));
+		mav.addObject("categoryList", myblogService.getUserCategory(blogAddress));
 		
 		mav.addObject("blogInfo", getUserBlogInfo);
 		
@@ -63,8 +71,7 @@ public class BoardController {
 		
 		UserBlogInfo getUserBlogInfo = myblogService.getBlog(blogAddress);
 
-		mav.addObject("categoryList",
-				myblogService.getUserCategory(blogAddress));
+		mav.addObject("categoryList", myblogService.getUserCategory(blogAddress));
 
 		mav.addObject("blogInfo", getUserBlogInfo);
 
@@ -84,9 +91,8 @@ public class BoardController {
 		
 		UserBlogInfo getUserBlogInfo = myblogService.getBlog(blogAddress);
 
-		mav.addObject("categoryList",
-				myblogService.getUserCategory(blogAddress));
-
+		mav.addObject("categoryList", myblogService.getUserCategory(blogAddress));
+		
 		mav.addObject("blogInfo", getUserBlogInfo);
 
 		mav.addObject("categoryId", categoryId);
@@ -111,8 +117,7 @@ public class BoardController {
 
 		mav.addObject("blogInfo", getUserBlogInfo);
 
-		mav.addObject("categoryList",
-				myblogService.getUserCategory(blogAddress));
+		mav.addObject("categoryList", myblogService.getUserCategory(blogAddress));
 
 		mav.addObject("categoryId", categoryId);
 
@@ -135,8 +140,7 @@ public class BoardController {
 
 		mav.addObject("blogInfo", getUserBlogInfo);
 
-		mav.addObject("categoryList",
-				myblogService.getUserCategory(blogAddress));
+		mav.addObject("categoryList", myblogService.getUserCategory(blogAddress));
 
 		mav.addObject("categoryId", categoryId);
 		mav.addObject("detailId", detailId);
@@ -163,8 +167,7 @@ public class BoardController {
 		
 		mav.addObject("blogInfo", getUserBlogInfo);
 
-		mav.addObject("categoryList",
-				myblogService.getUserCategory(blogAddress));
+		mav.addObject("categoryList", myblogService.getUserCategory(blogAddress));
 
 		mav.addObject("categoryId", categoryId);
 		mav.addObject("detailId", detailId);
@@ -172,6 +175,12 @@ public class BoardController {
 		mav.setViewName("blog/write");
 
 		return mav;
+	}
+	
+	@RequestMapping(value = "/blog/comment", method=RequestMethod.POST)
+	@ResponseBody
+	public Comment addComment(HttpSession session, @RequestBody Comment comment){		
+		return boardService.addComment(comment);
 	}
 
 	private UserInfo getSession(HttpSession session) {

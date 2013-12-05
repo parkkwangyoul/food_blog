@@ -1,6 +1,7 @@
 package com.food.blog.myblog;
 
 import java.util.List;
+import java.util.Map;
 
 public class Category {
 	private String blogAddress;
@@ -43,8 +44,8 @@ public class Category {
 
 	@Override
 	public String toString() {
-		return "Category [userId=" + blogAddress + ", categoryId=" + categoryId
-				+ ", categoryName=" + categoryName + ", categoryDetailList="
-				+ categoryDetailList + "]";
+		return "Category [blogAddress=" + blogAddress + ", categoryId="
+				+ categoryId + ", categoryName=" + categoryName
+				+ ", categoryDetailList=" + categoryDetailList + "]";
 	}
 }

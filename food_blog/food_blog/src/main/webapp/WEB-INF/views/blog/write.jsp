@@ -3,6 +3,30 @@
 <%@ include file="../layout/header.jspf" %>
 	<h3>새 글 쓰기</h3>
 	<form:form  commandName="content" enctype="multipart/form-data">
+	<c:choose>
+		<c:when test="${categoryId eq null or categoryId eq '' }">
+		</c:when>
+		<c:otherwise>
+			<c:choose>
+				<c:when test="${detailId eq null or detailId eq null }">
+					<form:hidden path="categoryId"/>
+					<form:select path="detailId">
+						<c:forEach var="category" items="${categoryList }">
+							<c:if test="${category.categoryId eq categoryId }">
+								<c:forEach var="detail" items="${category.categoryDetailList }">
+									<form:option value="${detail.detailId }">${detail.detailName }</form:option>
+								</c:forEach>
+							</c:if>
+						</c:forEach>
+					</form:select>
+				</c:when>
+				<c:otherwise>
+					<form:hidden path="categoryId"/>
+					<form:hidden path="detailId"/>
+				</c:otherwise>
+			</c:choose>
+		</c:otherwise>
+	</c:choose>
 	<table class="boardWrite">	
 		<table class="common_table_write big_table_write">
 			<colgroup>

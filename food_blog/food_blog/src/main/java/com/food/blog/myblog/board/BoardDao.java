@@ -3,6 +3,7 @@ package com.food.blog.myblog.board;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
 
+import com.food.blog.myblog.Comment;
 import com.food.blog.myblog.Content;
 import com.food.blog.myblog.ContentAttachment;
 
@@ -22,6 +23,14 @@ public class BoardDao extends SqlSessionDaoSupport {
 
 	public ContentAttachment getAttchment(Integer seq) {
 		return getSqlSession().selectOne("boardMapper.getAttachment", seq);
+	}
+
+	public void addComment(Comment comment) {
+		getSqlSession().insert("boardMapper.addComment", comment);
+	}
+
+	public Comment getComment(Comment comment) {
+		return getSqlSession().selectOne("boardMapper.getComment", comment);
 	}
 
 }
