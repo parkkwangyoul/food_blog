@@ -34,18 +34,14 @@ public class MyblogController {
 		ModelAndView mav = new ModelAndView();
 		userInfo = getSession(session);
 		UserBlogInfo getUserBlogInfo = myblogService.getBlog(blogAddress);
-
-		if (getUserBlogInfo.getBlogAddress() != null) {
-			mav.addObject("blogInfo", getUserBlogInfo);
-			mav.addObject("contentList",
-					myblogService.getContentList(null, null, blogAddress));
-			mav.addObject("categoryList", myblogService.getUserCategory(blogAddress));
-			
-			mav.setViewName("blog/blog");
-		} else {
-			session.setAttribute("userBlogInfo", getUserBlogInfo);
-			mav.setView(new RedirectView("/food_blog/"));
-		}
+		
+		mav.addObject("blogInfo", getUserBlogInfo);
+		mav.addObject("contentList",
+				myblogService.getContentList(null, null, blogAddress));
+		mav.addObject("categoryList", myblogService.getUserCategory(blogAddress));
+		
+		mav.setViewName("blog/blog");
+		
 		return mav;
 	}
 
@@ -57,18 +53,13 @@ public class MyblogController {
 		ModelAndView mav = new ModelAndView();
 		userInfo = getSession(session);
 		UserBlogInfo getUserBlogInfo = myblogService.getBlog(blogAddress);
-
-		if (getUserBlogInfo.getBlogAddress() != null) {
-			mav.addObject("blogInfo", getUserBlogInfo);
-			mav.addObject("contentList",
-					myblogService.getContentList(null, null, blogAddress));
-			mav.addObject("categoryList", myblogService.getUserCategory(blogAddress));
-			
-			mav.setViewName("blog/blog");
-		} else {
-			session.setAttribute("userBlogInfo", getUserBlogInfo);
-			mav.setView(new RedirectView("/food_blog/"));
-		}
+		
+		mav.addObject("blogInfo", getUserBlogInfo);
+		mav.addObject("contentList",
+				myblogService.getContentList(null, null, blogAddress));
+		mav.addObject("categoryList", myblogService.getUserCategory(blogAddress));
+		
+		mav.setViewName("blog/blog");
 		return mav;
 	}	
 	
