@@ -1,11 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jspf" %>
-		<div id="content">
 			<div class="right">
-				<h2><a href="<c:url value='./write/'/>">글 작성</a></h2>
 				<h2>
-					<a href="#">SubjectName</a>
+					<c:choose>
+						<c:when test="${(categoryId eq null or categoryId eq '') and (detailId eq null or detailId eq '') }">
+							<a href="${cp }/blog/${blogAddress }/write/">글 작성</a>
+						</c:when>
+						<c:when test="${detailId eq null or detailId eq '' }">
+							<a href="${cp }/blog/${blogAddress }/${categoryId }/write/">글 작성</a>
+						</c:when>	
+						<c:otherwise>
+							<a href="${cp }/blog/${blogAddress }/${categoryId }/${detailId }/write/">글 작성</a>
+						</c:otherwise>					
+					</c:choose>
 				</h2>
 				<div>
 					<c:choose>
@@ -18,6 +26,11 @@
 									<div class="blog_content_title">
 										${content.title }
 									</div>
+									<div class="blog_content_file">
+										<c:forEach var="file" items="${content.attachmentList }">
+											${file.fileName }
+										</c:forEach>
+									</div>									
 									<div class="blog_content_write_and_date">
 										${content.writeUser } ${content.writeDate }
 									</div>
