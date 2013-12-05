@@ -81,9 +81,7 @@ public class MyblogService {
 		temp.setBlogAddress(blogAddress);
 		temp.setBlogName(tp);
 		temp.setType(type);
-		temp.setBeforeBlogAddress(beforeBlogAddress);
-		
-		
+		temp.setBeforeBlogAddress(beforeBlogAddress);		
 		myblogDao.update(temp);
 	}
 

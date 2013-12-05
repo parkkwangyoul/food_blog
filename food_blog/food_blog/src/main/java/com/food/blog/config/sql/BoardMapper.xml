@@ -133,6 +133,14 @@
 	    		#{fileSize}
 	    	)
 	</insert>
-
+	
+	<update id="blogAddressUpdate" parameterType="UserBlogInfo">
+		UPDATE
+			blog_board
+		SET
+			blog_address = #{blogAddress}
+		WHERE
+			blog_address = #{beforeBlogAddress}
+	</update>
 
 </mapper>

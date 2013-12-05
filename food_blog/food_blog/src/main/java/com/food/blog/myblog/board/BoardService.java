@@ -9,8 +9,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+import com.food.blog.login.UserInfo;
 import com.food.blog.myblog.Content;
 import com.food.blog.myblog.ContentAttachment;
+import com.food.blog.myblog.UserBlogInfo;
 import com.food.blog.upload.UploadService;
 
 @Service
@@ -53,6 +55,17 @@ public class BoardService {
 			
 			boardDao.insertAttachment(ContentAttachment);
 		}
+	}
+	
+	public void updateBlogAddress(String blogAddress, String name, Integer type, String beforeBlogAddress){
+		UserBlogInfo temp = new UserBlogInfo();
+		String tp = name+"의 블로그";
+		
+		temp.setBlogAddress(blogAddress);
+		temp.setBlogName(tp);
+		temp.setType(type);
+		temp.setBeforeBlogAddress(beforeBlogAddress);		
+		boardDao.updateBlogAddress(temp);
 	}
 	
 /*	private void deleteAttachments(Content content) {
