@@ -108,21 +108,21 @@
 					,category_id
 				</if>
 				<if test="detailId != null and detailId != ''">
-					,detailId
+					,detail_id
 				</if>
 			)
 		VALUES
 			(
 				#{type},
 				#{content},
-				#{writeDate},
+				SYSDATE(),
 				#{writeUser},
 				#{star},
 				#{useStar},
 				#{useComment},
 				#{blogAddress}
 				<if test="categoryId != null and categoryId != ''">
-					,#{category_id}
+					,#{categoryId}
 				</if>
 				<if test="detailId != null and detailId != ''">
 					,#{detailId}
