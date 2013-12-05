@@ -28,7 +28,7 @@
 									</div>
 									<div class="blog_content_file">
 										<c:forEach var="file" items="${content.attachmentList }">
-											${file.fileName }
+											<a href="${cp }/download/${file.seq}">${file.fileName }</a>
 										</c:forEach>
 									</div>									
 									<div class="blog_content_write_and_date">

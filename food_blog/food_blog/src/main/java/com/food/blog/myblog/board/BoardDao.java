@@ -20,4 +20,8 @@ public class BoardDao extends SqlSessionDaoSupport {
 		getSqlSession().insert("boardMapper.insertAttachment", contentAttachment);
 	}
 
+	public ContentAttachment getAttchment(Integer seq) {
+		return getSqlSession().selectOne("boardMapper.getAttachment", seq);
+	}
+
 }

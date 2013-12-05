@@ -1,9 +1,12 @@
 package com.food.blog.myblog.board;
 
+import java.io.File;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.food.blog.config.servlet.ResourceNotFoundException;
 import com.food.blog.login.UserInfo;
 import com.food.blog.myblog.Content;
+import com.food.blog.myblog.ContentAttachment;
 import com.food.blog.myblog.MyblogService;
 import com.food.blog.myblog.UserBlogInfo;
 
@@ -173,5 +178,19 @@ public class BoardController {
 		UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
 
 		return userInfo;
+	}
+	
+	@Resource 
+	DownloadView downloadView;
+	
+	@RequestMapping(value="/download/{seq}", method=RequestMethod.GET)
+	public DownloadView showDownload(Model model, @PathVariable Integer seq) {		
+		ContentAttachment attachment = boardService.getAttachment(seq);
+		
+		if (attachment == null || new File(attachment.getFilePath()).canRead() == false) throw new ResourceNotFoundException();
+		
+		model.addAttribute("attachment", attachment);
+		
+		return downloadView;
 	}
 }
