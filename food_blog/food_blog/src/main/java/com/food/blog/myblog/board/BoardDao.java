@@ -4,6 +4,7 @@ import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
 
 import com.food.blog.myblog.Content;
+import com.food.blog.myblog.ContentAttachment;
 
 @Repository
 public class BoardDao extends SqlSessionDaoSupport {
@@ -13,6 +14,10 @@ public class BoardDao extends SqlSessionDaoSupport {
 	
 	public void joinContent(Content content){
 		getSqlSession().insert("boardMapper.joinContent", content);
+	}
+
+	public void insertAttachment(ContentAttachment contentAttachment) {
+		getSqlSession().insert("boardMapper.insertAttachment", contentAttachment);
 	}
 
 }

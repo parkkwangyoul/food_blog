@@ -35,7 +35,7 @@
 									</div> <form:hidden path="userId" class="fb-create-user-input"
 										data-form="create" value="${sessionScope.userInfo.userId}" />${sessionScope.userInfo.userId}
 									<div class="fb-create-user-error">
-										<form:errors path="userId" Class="commonError">1</form:errors>
+										<form:errors path="*"></form:errors>
 									</div>
 								</td>
 							</tr>
@@ -43,12 +43,12 @@
 								<th>이름(별명)</th>
 								<td>
 									<div class="fb-create-user-vaild-wrap">
-										<span class="fb-form-invalid">아이디는
+										<span class="fb-form-invalid">이름은
 											1자&nbsp;이상&nbsp;20자&nbsp;이하를&nbsp;입력해야&nbsp;합니다.</span>
 									</div> <form:input path="name" class="fb-create-user-input"
 										data-form="createNm"  value="${sessionScope.userInfo.name}" />
 									<div class="fb-create-user-error">
-										<form:errors path="name" Class="commonError"></form:errors>
+										<form:errors path="*"></form:errors>
 									</div>
 								</td>
 							</tr>
@@ -60,7 +60,7 @@
 									</div> <form:password path="password" class="fb-create-user-input"
 										data-form="createPw" value="${sessionScope.userInfo.password}" />
 									<div class="fb-create-user-error">
-										<form:errors path="password" Class="commonError"></form:errors>
+										<form:errors path="*"></form:errors>
 									</div>
 								</td>
 							</tr>
@@ -73,7 +73,7 @@
 									</div> <form:password path="confirmPassword"
 										class="fb-create-user-input" value="${sessionScope.userInfo.password}" />
 									<div class="fb-create-user-error">
-										<form:errors path="confirmPassword" Class="commonError"></form:errors>
+										<form:errors path="*"></form:errors>
 									</div>
 
 								</td>
@@ -86,7 +86,7 @@
 									</div> <form:input path="emailAddress" class="fb-create-user-input"
 										data-type="email" value="${sessionScope.userInfo.emailAddress }"/>
 									<div class="fb-create-user-error">
-										<form:errors path="emailAddress" cssClass="commonError"></form:errors>
+										<form:errors path="*"></form:errors>
 									</div>
 								</td>
 							</tr>

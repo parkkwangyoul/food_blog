@@ -1,37 +1,51 @@
 package com.food.blog.myblog;
 
+import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
 public class Content extends Category {
-	private int pn;
-	private int type;
+	private Integer pn;
+	private Integer type;
 	private String title;
 	private String content;
 	private String writeUser;
 	private String writeDate;
-	private int star;
+	private Integer star;
 
-	private boolean useStar;
-	private boolean useComment;
+	private Boolean useStar;
+	private Boolean useComment;
 
 	private String blogAddress;
 
 	private List<Comment> commentList;
 
-	public int getPn() {
+	/* 쿼리용 */
+	private Integer detailId;
+
+	public Integer getPn() {
 		return pn;
 	}
 
-	public void setPn(int pn) {
+	public void setPn(Integer pn) {
 		this.pn = pn;
 	}
 
-	public int getType() {
+	public Integer getType() {
 		return type;
 	}
 
-	public void setType(int type) {
+	public void setType(Integer type) {
 		this.type = type;
+	}
+
+	public Integer getStar() {
+		return star;
+	}
+
+	public void setStar(Integer star) {
+		this.star = star;
 	}
 
 	public String getContent() {
@@ -40,6 +54,22 @@ public class Content extends Category {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public Boolean getUseStar() {
+		return useStar;
+	}
+
+	public void setUseStar(Boolean useStar) {
+		this.useStar = useStar;
+	}
+
+	public Boolean getUseComment() {
+		return useComment;
+	}
+
+	public void setUseComment(Boolean useComment) {
+		this.useComment = useComment;
 	}
 
 	public String getWriteUser() {
@@ -56,14 +86,6 @@ public class Content extends Category {
 
 	public void setWriteDate(String writeDate) {
 		this.writeDate = writeDate;
-	}
-
-	public int getStar() {
-		return star;
-	}
-
-	public void setStar(int star) {
-		this.star = star;
 	}
 
 	public String getBlogAddress() {
@@ -90,20 +112,12 @@ public class Content extends Category {
 		this.title = title;
 	}
 
-	public boolean isUseStar() {
-		return useStar;
+	public Integer getDetailId() {
+		return detailId;
 	}
 
-	public void setUseStar(boolean useStar) {
-		this.useStar = useStar;
-	}
-
-	public boolean isUseComment() {
-		return useComment;
-	}
-
-	public void setUseComment(boolean useComment) {
-		this.useComment = useComment;
+	public void setDetailId(Integer detailId) {
+		this.detailId = detailId;
 	}
 
 	@Override
@@ -112,6 +126,46 @@ public class Content extends Category {
 				+ ", content=" + content + ", writeUser=" + writeUser
 				+ ", writeDate=" + writeDate + ", star=" + star + ", useStar="
 				+ useStar + ", useComment=" + useComment + ", blogAddress="
-				+ blogAddress + ", commentList=" + commentList + "]";
-	}	
+				+ blogAddress + ", commentList=" + commentList + ", detailId="
+				+ detailId + "]";
+	}
+
+	/**
+	 * Files to upload
+	 */
+	private CommonsMultipartFile attachments[];
+
+	/**
+	 * Files already uploaded
+	 */
+	private List<ContentAttachment> attachmentList;
+
+	/**
+	 * 
+	 */
+	private Integer deleteAttachments[];
+
+	public CommonsMultipartFile[] getAttachments() {
+		return attachments;
+	}
+
+	public void setAttachments(CommonsMultipartFile[] attachments) {
+		this.attachments = attachments;
+	}
+
+	public List<ContentAttachment> getAttachmentList() {
+		return attachmentList;
+	}
+
+	public void setAttachmentList(List<ContentAttachment> attachmentList) {
+		this.attachmentList = attachmentList;
+	}
+
+	public Integer[] getDeleteAttachments() {
+		return deleteAttachments;
+	}
+
+	public void setDeleteAttachments(Integer[] deleteAttachments) {
+		this.deleteAttachments = deleteAttachments;
+	}
 }

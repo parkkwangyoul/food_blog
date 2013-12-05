@@ -13,6 +13,7 @@
 		<result property="useComment" column="usecomment"/>
 		<result property="blogAddress" column="blog_address"/>
 		<collection property="commentList" column="pn" javaType="ArrayList" ofType="Comment" select="getCommentListByContentId" />
+		<collection property="attachmentList" column="pn" javaType="ArrayList" ofType="ContentAttachment" select="getContentAttachmentByContentId"></collection>
 	</resultMap>
 	
 	<resultMap type="Comment" id="CommentMap">
@@ -21,6 +22,15 @@
 		<result property="writeUser" column="write_user"/>
 		<result property="writeDate" column="write_date"/>
 		<result property="blogPn" column="blog_pn"/>
+	</resultMap>
+	
+	<resultMap type="ContentAttachment" id="ContentAttachmentMap">
+	    <result property="seq" column="seq"/>
+		<result property="boardPn" column="board_pn"/>
+		<result property="fileName" column="file_name"/>
+		<result property="filePath" column="file_path"/>
+		<result property="fileExtension" column="file_extension"/>
+		<result property="fileSize" column="file_size"/>	    	    
 	</resultMap>
 	
 	<select id="getContentList" resultMap="ContentMap" parameterType="ContentFilter">
@@ -54,6 +64,15 @@
 	    	write_date 
 	</select>
 	
+	<select id="getContentAttachmentByContentId" resultMap="ContentAttachmentMap">
+	    SELECT
+	    	seq, board_pn, file_name, file_path, file_extension, file_size
+	    FROM
+	    	blog_board_attachments
+	    WHERE
+	    	board_pn = #{pn}
+	</select>
+	
 	<insert id="joinContent" parameterType="Content">
 	INSERT INTO
 			blog_board
@@ -66,6 +85,12 @@
 				usestar,
 				usecomment,
 				blog_address
+				<if test="categoryId != null and categoryId != ''">
+					,category_id
+				</if>
+				<if test="detailId != null and detailId != ''">
+					,detailId
+				</if>
 			)
 		VALUES
 			(
@@ -74,10 +99,39 @@
 				#{writeDate},
 				#{writeUser},
 				#{star},
-				#{userStar},
+				#{useStar},
 				#{useComment},
 				#{blogAddress}
+				<if test="categoryId != null and categoryId != ''">
+					,#{category_id}
+				</if>
+				<if test="detailId != null and detailId != ''">
+					,#{detailId}
+				</if>
 			)	
+		<selectKey keyProperty="pn" resultType="Integer">
+		    SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	
+	<insert id="insertAttachment" parameterType="ContentAttachment">
+	    INSERT INTO
+	    	blog_board_attachments
+	    	(
+	    		board_pn,
+	    		file_name,
+	    		file_path,
+	    		file_extension,
+	    		file_size
+	    	)	    
+	    VALUES
+	    	(
+	    		#{boardPn},
+	    		#{fileName},
+	    		#{filePath},
+	    		#{fileExtension},
+	    		#{fileSize}
+	    	)
 	</insert>
 
 

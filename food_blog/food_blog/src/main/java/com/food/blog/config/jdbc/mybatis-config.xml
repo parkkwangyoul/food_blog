@@ -9,6 +9,7 @@
     	<typeAlias alias="ContentFilter" type="com.food.blog.myblog.ContentFilter"/>
     	<typeAlias alias="Category" type="com.food.blog.myblog.Category"/>
     	<typeAlias alias="CategoryDetail" type="com.food.blog.myblog.CategoryDetail"/>
+    	<typeAlias alias="ContentAttachment" type="com.food.blog.myblog.ContentAttachment"/>
     </typeAliases>
 
 </configuration>

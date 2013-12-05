@@ -54,7 +54,7 @@
         <beans:property name="basenames">
              <beans:list>
                   <beans:value>/com/food/blog/message</beans:value>
-                  <beans:value>/com/food/blog/message/messages_login_ko_KR.properties</beans:value>
+                  <beans:value>/com/food/blog/message/messages_login_ko_KR</beans:value>
              </beans:list>
         </beans:property>
     </beans:bean>

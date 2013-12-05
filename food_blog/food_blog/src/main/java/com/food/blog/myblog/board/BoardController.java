@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -12,48 +13,165 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.food.blog.login.UserInfo;
 import com.food.blog.myblog.Content;
+import com.food.blog.myblog.MyblogService;
+import com.food.blog.myblog.UserBlogInfo;
 
 @Controller
 public class BoardController {
-	
+
 	@Resource
 	private BoardService boardService;
-	
-	/**
-	 * 글 작성
-	 */
-	
-	@RequestMapping(value = "/blog/write", method = RequestMethod.POST)
-	public ModelAndView writeContent(HttpSession session, @ModelAttribute UserInfo userInfo, @ModelAttribute Content content) {
+
+	@Resource
+	private MyblogService myblogService;
+
+	@RequestMapping(value = "/blog/{blogAddress}/write", method = RequestMethod.POST)
+	public ModelAndView writeContentPost(HttpSession session,
+			@ModelAttribute UserInfo userInfo, @ModelAttribute Content content,
+			@PathVariable String blogAddress) {
 		ModelAndView mav = new ModelAndView();
 		userInfo = getSession(session);
 		content.setWriteUser(userInfo.getName());
 		content.setBlogAddress(userInfo.getBlogAddress());
 		
-		System.out.println(content.toString());
+		UserBlogInfo getUserBlogInfo = myblogService.getBlog(blogAddress);
+
+		mav.addObject("categoryList",
+				myblogService.getUserCategory(blogAddress));
 		
-		boardService.joinContent(content);
+		mav.addObject("blogInfo", getUserBlogInfo);
 		
-		mav.setView(new RedirectView("/food_blog/blog"));
+		content.setBlogAddress(blogAddress);
+
+		boardService.insertBoard(content);
+
+		mav.setView(new RedirectView("/food_blog/blog/" + blogAddress));
 
 		return mav;
 	}
-	
-	/**
-	 * write입장
-	 */
-	@RequestMapping(value = "/blog/write", method = RequestMethod.GET)
-	public ModelAndView writeTest(HttpSession session, @ModelAttribute UserInfo userInfo, @ModelAttribute Content content) {
+
+	@RequestMapping(value = "/blog/{blogAddress}/write", method = RequestMethod.GET)
+	public ModelAndView writeContentGet(HttpSession session,
+			@ModelAttribute UserInfo userInfo, @ModelAttribute Content content,
+			@PathVariable String blogAddress) {
 		ModelAndView mav = new ModelAndView();
 		
+		UserBlogInfo getUserBlogInfo = myblogService.getBlog(blogAddress);
+
+		mav.addObject("categoryList",
+				myblogService.getUserCategory(blogAddress));
+
+		mav.addObject("blogInfo", getUserBlogInfo);
+
 		mav.setViewName("blog/write");
 
 		return mav;
 	}
-	
+
+	@RequestMapping(value = "/blog/{blogAddress}/{categoryId}/write", method = RequestMethod.POST)
+	public ModelAndView writeContentbByCategoryIdPost(HttpSession session,
+			@ModelAttribute UserInfo userInfo, @ModelAttribute Content content,
+			@PathVariable String blogAddress, @PathVariable String categoryId) {
+		ModelAndView mav = new ModelAndView();
+		userInfo = getSession(session);
+		content.setWriteUser(userInfo.getName());
+		content.setBlogAddress(userInfo.getBlogAddress());
+		
+		UserBlogInfo getUserBlogInfo = myblogService.getBlog(blogAddress);
+
+		mav.addObject("categoryList",
+				myblogService.getUserCategory(blogAddress));
+
+		mav.addObject("blogInfo", getUserBlogInfo);
+
+		mav.addObject("categoryId", categoryId);
+		
+		content.setBlogAddress(blogAddress);
+		content.setCategoryId(categoryId);
+
+		boardService.insertBoard(content);
+
+		mav.setView(new RedirectView("/food_blog/blog/" + blogAddress + "/" + categoryId));
+
+		return mav;
+	}
+
+	@RequestMapping(value = "/blog/{blogAddress}/{categoryId}/write", method = RequestMethod.GET)
+	public ModelAndView writeConentByCateogryIdGet(HttpSession session,
+			@ModelAttribute UserInfo userInfo, @ModelAttribute Content content,
+			@PathVariable String blogAddress, @PathVariable String categoryId) {
+		ModelAndView mav = new ModelAndView();
+		
+		UserBlogInfo getUserBlogInfo = myblogService.getBlog(blogAddress);		
+
+		mav.addObject("blogInfo", getUserBlogInfo);
+
+		mav.addObject("categoryList",
+				myblogService.getUserCategory(blogAddress));
+
+		mav.addObject("categoryId", categoryId);
+
+		mav.setViewName("blog/write");
+
+		return mav;
+	}
+
+	@RequestMapping(value = "/blog/{blogAddress}/{categoryId}/{detailId}/write", method = RequestMethod.POST)
+	public ModelAndView writeContentbByDetailIdPost(HttpSession session,
+			@ModelAttribute UserInfo userInfo, @ModelAttribute Content content,
+			@PathVariable String blogAddress, @PathVariable String categoryId,
+			@PathVariable String detailId) {
+		ModelAndView mav = new ModelAndView();
+		userInfo = getSession(session);
+		content.setWriteUser(userInfo.getName());
+		content.setBlogAddress(userInfo.getBlogAddress());
+		
+		UserBlogInfo getUserBlogInfo = myblogService.getBlog(blogAddress);		
+
+		mav.addObject("blogInfo", getUserBlogInfo);
+
+		mav.addObject("categoryList",
+				myblogService.getUserCategory(blogAddress));
+
+		mav.addObject("categoryId", categoryId);
+		mav.addObject("detailId", detailId);
+		
+		content.setBlogAddress(blogAddress);
+		content.setCategoryId(categoryId);
+		content.setDetailId(Integer.parseInt(detailId));
+
+		boardService.insertBoard(content);
+
+		mav.setView(new RedirectView("/food_blog/blog/" + blogAddress + "/" + categoryId + "/" + detailId));
+
+		return mav;
+	}
+
+	@RequestMapping(value = "/blog/{blogAddress}/{categoryId}/{detailId}/write", method = RequestMethod.GET)
+	public ModelAndView writeConentByDetailIdGet(HttpSession session,
+			@ModelAttribute UserInfo userInfo, @ModelAttribute Content content,
+			@PathVariable String blogAddress, @PathVariable String categoryId,
+			@PathVariable String detailId) {
+		ModelAndView mav = new ModelAndView();
+		
+		UserBlogInfo getUserBlogInfo = myblogService.getBlog(blogAddress);
+		
+		mav.addObject("blogInfo", getUserBlogInfo);
+
+		mav.addObject("categoryList",
+				myblogService.getUserCategory(blogAddress));
+
+		mav.addObject("categoryId", categoryId);
+		mav.addObject("detailId", detailId);
+
+		mav.setViewName("blog/write");
+
+		return mav;
+	}
+
 	private UserInfo getSession(HttpSession session) {
 		UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
-		
+
 		return userInfo;
 	}
 }

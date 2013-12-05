@@ -24,6 +24,7 @@ public class modifyValidator implements Validator{
 	public void validate(Object target, Errors errors) {
 		UserInfo userInfo = (UserInfo) target;
 		String userId = userInfo.getUserId();
+		String name = userInfo.getName();
 		String password = userInfo.getPassword();
 		String confirmPassword = userInfo.getConfirmPassword();
 		String emailAddress = userInfo.getEmailAddress();
@@ -35,6 +36,10 @@ public class modifyValidator implements Validator{
 
 		if (userId.length() > 20) { 
 			errors.rejectValue("userId", "create.userId.emptyOrError");
+		}
+		
+		if (name.length() > 20) { 
+			errors.rejectValue("name", "create.userId.emptyOrError");
 		}
 		
 		if (password.length() < 8 || password.length() > 16) {
