@@ -97,6 +97,15 @@
 	WHERE
 		blog_address = #{beforeBlogAddress}		
 	 </update>
+	 
+	 <update id="blogAddressUpdateAtUserCategory" parameterType="UserBlogInfo">
+		UPDATE
+			user_category
+		SET
+			blog_address = #{blogAddress}
+		WHERE
+			blog_address = #{beforeBlogAddress}
+	</update>
 	
 	
 	

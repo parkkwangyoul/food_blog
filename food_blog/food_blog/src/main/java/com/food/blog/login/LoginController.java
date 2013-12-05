@@ -18,6 +18,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.food.blog.myblog.MyblogService;
 import com.food.blog.myblog.UserBlogInfo;
+import com.food.blog.myblog.board.BoardService;
 
 
 @Controller
@@ -30,6 +31,9 @@ public class LoginController {
 	
 	@Resource
 	private MyblogService myblogService;
+	
+	@Resource
+	private BoardService boardService;
 	
 	@Resource
 	private LoginValidator loginValidator;
@@ -157,6 +161,7 @@ public class LoginController {
 			session.setAttribute("userInfo", userInfo);
 			loginService.userUpate(userInfo);
 			myblogService.updateUserBlogInfo(userInfo.getBlogAddress(), userInfo.getName(), userInfo.getType(), userInfo.getBeforeBlogAddress());
+			boardService.updateBlogAddress(userInfo.getBlogAddress(), userInfo.getName(), userInfo.getType(), userInfo.getBeforeBlogAddress());
 			mav.setView(new RedirectView("/food_blog/"));
 		} else {
 			System.out.println("수정안됨");			

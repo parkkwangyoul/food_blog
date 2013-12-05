@@ -36,6 +36,7 @@ public class MyblogDao extends SqlSessionDaoSupport {
 	
 	public void update(UserBlogInfo userBlogInfo){
 		getSqlSession().update("myblogInfoMapper.update", userBlogInfo);
+		getSqlSession().update("myblogInfoMapper.blogAddressUpdateAtUserCategory", userBlogInfo);
 	}
 
 }

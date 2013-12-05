@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.food.blog.myblog.Comment;
 import com.food.blog.myblog.Content;
 import com.food.blog.myblog.ContentAttachment;
+import com.food.blog.myblog.UserBlogInfo;
 
 @Repository
 public class BoardDao extends SqlSessionDaoSupport {
@@ -19,6 +20,10 @@ public class BoardDao extends SqlSessionDaoSupport {
 
 	public void insertAttachment(ContentAttachment contentAttachment) {
 		getSqlSession().insert("boardMapper.insertAttachment", contentAttachment);
+	}
+	
+	public void updateBlogAddress(UserBlogInfo userBlogInfo){
+		getSqlSession().update("boardMapper.blogAddressUpdate", userBlogInfo);
 	}
 
 	public ContentAttachment getAttchment(Integer seq) {
