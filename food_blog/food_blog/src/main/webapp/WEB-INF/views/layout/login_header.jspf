@@ -8,8 +8,8 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<link rel="stylesheet" type="text/css"
-	href="${cp}/resources/css/login.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="${cp}/resources/css/default.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="${cp}/resources/css/login.css" />
 <title>Food_Blog</title>
 </head>
 <body>

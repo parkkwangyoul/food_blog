@@ -5,7 +5,7 @@ public class Comment {
 	private String content;
 	private String writeUser;
 	private String writeDate;
-	private int boardPn;
+	private int blogPn;
 	
 	public int getPn() {
 		return pn;
@@ -31,17 +31,20 @@ public class Comment {
 	public void setWriteDate(String writeDate) {
 		this.writeDate = writeDate;
 	}
-	public int getBoardPn() {
-		return boardPn;
+
+	public int getBlogPn() {
+		return blogPn;
 	}
-	public void setBoardPn(int boardPn) {
-		this.boardPn = boardPn;
+
+	public void setBlogPn(int blogPn) {
+		this.blogPn = blogPn;
 	}
+
 	@Override
 	public String toString() {
 		return "Comment [pn=" + pn + ", content=" + content + ", writeUser="
-				+ writeUser + ", writeDate=" + writeDate + ", boardPn="
-				+ boardPn + "]";
+				+ writeUser + ", writeDate=" + writeDate + ", blogPn=" + blogPn
+				+ "]";
 	}
 	
 }

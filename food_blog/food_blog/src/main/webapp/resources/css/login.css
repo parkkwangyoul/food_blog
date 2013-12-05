@@ -1,57 +1,5 @@
 @CHARSET "UTF-8";
-/*.fb-login-loginForm li{ display: inline; padding: 5px;  }*/
 
-/*
-	* create page *
-*/
-/*
-.login-create-table{ float: left; margin-left: 500px; border: 1px solid black; }
-.login-create-table tr{ padding-bottom : 10px; }
-.login-create-tagcloud{ float: left; border : 1px solid black; }
-
-
-.fb-btn-orange-login{padding: 5px 10px;}
-.fb-create-user-header{ width: 990px; margin: auto auto; height: 75px; }
-.fb-create-user-login, .fb-create-user-login:VISITED{ font-size: 12px; float: right; color: #808080; margin-top: 60px;}
-.fb-create-user-login:HOVER, .fb-create-user-login:ACTIVE{color: #000;}
-.fb-create-user-wrap{ width : 500px; margin: 75px auto 0 auto; min-height: 400px;}
-.fb-create-user-info{ width: 500px; float: left;}
-.fb-create-user-info>h1{ float: left; width: 100%; padding: 0 0 20px 0; font-size: 20px; color: #524d4d;}
-.fb-create-user-info>h2{ float: left; width: 100%; padding: 0 0 20px 0; font-size: 12px; color: #524d4d;}
-.fb-create-user-table { border-collapse: collapse; width: 500px; font-size: 12px;}
-.fb-create-user-table th, .fb-create-user-table td{ padding: 3px 2px 3px 2px; height: 55px;}
-.fb-create-user-table th{ width: 200px; vertical-align: middle; color: #8c827e;  text-align: left; font-size: 15px; font-weight: normal;}
-.fb-create-user-table td{ width: 300px; vertical-align: middle;}
-.fb-create-user-table tbody th, .fb-create-user-table tbody td { }
-.fb-create-user-table thead th, .fb-create-user-table thead td { }
-.fb-create-user-table tfoot th, .fb-create-user-table tfoot td { text-align: center;}
-.fb-create-user-input { width: 220px; padding: 2px 3px; border: 1px solid #ad9c9c; height: 25px;
- 	-webkit-border-radius: 5px 5px;
-    -moz-border-radius: 5px 5px;
-    border-radius: 5px 5px;
-}
-.fb-create-user-input:FOCUS{	border: 1px solid #ff8a00; }
-.fb-create-user-input-error { width: 220px; padding: 2px 3px; border: 1px solid #ff8a00; height: 25px;
- 	-webkit-border-radius: 5px 5px;
-    -moz-border-radius: 5px 5px;
-    border-radius: 5px 5px;
-}
-.fb-create-user-input-error:FOCUS{ border: 1px solid #ff0000;  }
-
-.fb-create-user-vaild-wrap{position: absolute; margin: 3px 0 0 245px; width: 300px; display: none;}
-.fb-create-user-vaild-wrap>span{display: block; width: 280px; background: #fff; font-size: 11px; text-align: center; }
-.fb-form-invalid { line-height: 24px; color: red; border: 1px solid red;}
-.fb-form-valid { line-height: 24px; color: green; border: 1px solid green;}
-.fb-create-submit{width: 100px; font-size: 15px;}
-
-.fb-create-user-warning{font-size: 11px; color: #7a7a7a; margin: 20px 0 0 20px;}
-.fb-create-user-warning>ul{}
-.fb-create-user-warning>ul>li{ padding: 5px 0; list-style-type: circle;}
-.fb-create-user-warning>ul>li>a, .fb-create-user-warning>ul>li>a:VISITED{ color: #7a7a7a; text-decoration: underline;}
-.fb-create-user-warning>ul>li>a:HOVER{ color: #7a7a7a; }
-
-.fb-create-user-error{font-size: 11px; margin: 5px 0 0 5px; line-height: 1.2; color: #ff3c00;}
-*/
 * {
 	margin: 0;
 	padding: 0;
@@ -74,55 +22,6 @@
 }
 
 /** custom loginPage **/
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
-
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-  display: block;
-}
-
-body {
-  line-height: 1;
-}
-
-ol, ul {
-  list-style: none;
-}
-
-blockquote, q {
-  quotes: none;
-}
-
-blockquote:before, blockquote:after,
-q:before, q:after {
-  content: '';
-  content: none;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
 .about {
   margin: 70px auto 40px;
   padding: 8px;
@@ -181,7 +80,7 @@ table {
  * Licensed under the MIT License:
  * http://www.opensource.org/licenses/mit-license.php
  */
-body/*, .login-submit, .login-submit:before, .login-submit:after */{
+.errLoginBody {
 	width: 1400px auto;
 	height: 1400px auto;
 	background-color: #362618;
@@ -193,14 +92,6 @@ body/*, .login-submit, .login-submit:before, .login-submit:after */{
 body {
   font: 14px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #404040;
-}
-
-a {
-  color: #00a1d2;
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
 }
 
 .login {
@@ -304,8 +195,8 @@ label {
   border: 0;
   border-radius: 24px;
   cursor: pointer;
-  /*-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2), 0 1px rgba(255, 255, 255, 0.1);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2), 0 1px rgba(255, 255, 255, 0.1);*/
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2), 0 1px rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2), 0 1px rgba(255, 255, 255, 0.1);
   /* Must use another pseudo element for the gradient background because Webkit */
   /* clips the background incorrectly inside elements with a border-radius.     */
 }

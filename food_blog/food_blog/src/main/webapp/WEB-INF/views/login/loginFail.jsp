@@ -11,8 +11,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>TastyBlog - Login Failed</title>
 </head>
-<body>
+<body class="errLoginBody">
 	<center>
+		<div>Login Failed</div>
 		<form:form commandName="userInfo" class="login">
 			<p>
 				<label for="login">ID:</label>
@@ -28,9 +29,11 @@
 					:after</button>
 				<!-- :after -->
 			</p>
+
 			<div style="float: left; margin-left: 365px">
 				<a href="<c:url value='/join/' />"> <img alt="loginError"
-					src="${cp}/resources/image/btn_sign_in.png" />
+					src="${cp}/resources/image/btn_sign_in.png" width="150px"
+					height="150px" />
 				</a>
 			</div>
 		</form:form>

@@ -1,9 +1,10 @@
 /**
  * 
  */
-$(document).ready(function() {
+$(document).ready(function() {	
 	// Store variables
-	var accordion_head = $('.accordion > li > a'), accordion_body = $('.accordion li > .sub-menu');
+	
+	var accordion_head = $('.accordion > li > a[data-check=true]'), accordion_body = $('.accordion li > .sub-menu');
 
 	// Open the first tab on load
 	accordion_head.first().addClass('active').next().slideDown('normal');
