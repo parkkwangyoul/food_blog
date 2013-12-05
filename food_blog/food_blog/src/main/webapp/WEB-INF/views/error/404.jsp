@@ -14,6 +14,6 @@
 </style>
 </head>
 <body>
-<a href="javascript:history.back();" class="error"><img alt="404 The page cannot be found" src="${cp }/resources/image/error/404.jpg" style="border: 0;"><a>
+<a href="javascript:history.back();" class="error"><img alt="404 The page cannot be found" src="${cp }/resources/image/error/404.jpg"></a>
 </body>
 </html>

@@ -10,14 +10,19 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 public class UploadServiceImpl implements UploadService {
 
 	public String getFreeFilePath(String ... paths) {
+
 		String path = "resources/upload/";
+
 		
 		for (int i = 0; i < paths.length; ++i) {
 			path += paths[i] + "/";
 	    }
 		
-		/*로컬용 경로*/
+
 		path = "C:/sourcetree/food_blog/food_blog/food_blog/src/main/webapp/resources/upload/";
+
+		/* 로컬 경로 */
+		//path = "C:/Users/user/Documents/food_blog/food_blog/food_blog/src/main/webapp/resources/upload/";
 		
 		//랜덤 경로 생성: 이미 없는 경로를 만든다.
 		String randomPath = null;

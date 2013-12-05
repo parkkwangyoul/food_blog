@@ -26,4 +26,8 @@ public class BoardDao extends SqlSessionDaoSupport {
 		getSqlSession().update("boardMapper.blogAddressUpdate", userBlogInfo);
 	}
 
+	public ContentAttachment getAttchment(Integer seq) {
+		return getSqlSession().selectOne("boardMapper.getAttachment", seq);
+	}
+
 }

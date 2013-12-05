@@ -97,6 +97,10 @@ public class BoardService {
 		}
 		return list;
 	}
+
+	public ContentAttachment getAttachment(Integer seq) {
+		return boardDao.getAttchment(seq);
+	}
 	
 	
 }

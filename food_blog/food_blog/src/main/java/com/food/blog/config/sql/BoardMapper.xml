@@ -73,6 +73,16 @@
 	    	board_pn = #{pn}
 	</select>
 	
+	<select id="getAttachment" parameterType="Integer" resultMap="ContentAttachmentMap">
+	   
+	    SELECT
+	    	seq, board_pn, file_name, file_path, file_extension, file_size
+	    FROM
+	    	blog_board_attachments
+	    WHERE
+	    	seq = #{value} 	    
+	</select>
+	
 	<insert id="joinContent" parameterType="Content">
 	INSERT INTO
 			blog_board
