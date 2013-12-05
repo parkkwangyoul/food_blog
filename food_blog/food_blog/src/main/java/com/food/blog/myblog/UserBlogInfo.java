@@ -3,8 +3,17 @@ package com.food.blog.myblog;
 public class UserBlogInfo {
 	String blogAddress;
 	String blogName;
+	String beforeBlogAddress;
 	int type=1;// 기본 게시판 유형은 1번유형
 	
+	
+	
+	public String getBeforeBlogAddress() {
+		return beforeBlogAddress;
+	}
+	public void setBeforeBlogAddress(String beforeBlogAddress) {
+		this.beforeBlogAddress = beforeBlogAddress;
+	}
 	public String getBlogAddress() {
 		return blogAddress;
 	}

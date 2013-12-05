@@ -57,5 +57,17 @@
         		#{blogAddress}
         	) 
 	</insert>
+	
+	<update id="update" parameterType="UserInfo">
+	UPDATE 
+		users
+	SET
+		name = #{name},
+		password = #{password},
+		email_address = #{emailAddress},
+		blog_address = #{blogAddress}
+	WHERE
+		user_id = #{userId}	
+	</update>
 
 </mapper>

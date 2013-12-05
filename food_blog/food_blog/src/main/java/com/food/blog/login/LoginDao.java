@@ -21,4 +21,8 @@ public class LoginDao extends SqlSessionDaoSupport {
 	public int blogCheck(UserInfo userInfo){
 		return (Integer) getSqlSession().selectOne("loginMapper.blogCheck", userInfo);
 	}
+	
+	public void update(UserInfo userInfo){
+		getSqlSession().update("loginMapper.update", userInfo);
+	}
 }

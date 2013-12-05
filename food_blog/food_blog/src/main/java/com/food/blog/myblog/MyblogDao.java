@@ -33,5 +33,9 @@ public class MyblogDao extends SqlSessionDaoSupport {
 	public UserBlogInfo getBlogByUserId(String userId) {
 		return getSqlSession().selectOne("myblogInfoMapper.getBlogByUserId", userId);
 	}
+	
+	public void update(UserBlogInfo userBlogInfo){
+		getSqlSession().update("myblogInfoMapper.update", userBlogInfo);
+	}
 
 }

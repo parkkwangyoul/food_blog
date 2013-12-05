@@ -87,6 +87,17 @@
 			)	
 	</insert>
 	
+	<update id="update" parameterType="UserBlogInfo">
+	UPDATE
+		user_blog
+	SET
+		blog_address = #{blogAddress},
+		blog_name = #{blogName},
+		type = #{type}
+	WHERE
+		blog_address = #{beforeBlogAddress}		
+	 </update>
+	
 	
 	
 </mapper>
