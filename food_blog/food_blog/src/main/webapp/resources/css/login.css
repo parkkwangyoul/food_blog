@@ -233,6 +233,20 @@ label {
   background: url("../image/btnText_login.png") 0 0 no-repeat;
 }
 
+#home-login-input, #home-password-input {
+	margin: 3px;
+	padding: 3px 10px;
+  	width: 200px;
+  	height: 30px;
+  	color: #2a2306;
+  	text-shadow: 1px 1px 1px black;
+  	background: rgba(0, 0, 0, 0.16);
+  	border: 0;
+  	border-radius: 5px;
+  	-webkit-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.06);
+  	box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.06);
+}
+
 ::-moz-focus-inner {
   border: 0;
   padding: 0;
