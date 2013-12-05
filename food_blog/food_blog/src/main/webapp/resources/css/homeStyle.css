@@ -190,6 +190,21 @@
 	font-size: 5px;
 }
 
+/* .blog_content_comment_add_wrap {
+	width: 220px; padding: 2px 3px; border: 1px solid #ad9c9c; height: 25px;
+ 	-webkit-border-radius: 5px 5px;
+    -moz-border-radius: 5px 5px;
+    border-radius: 5px 5px;
+} */
+
+.blog_content_comment_add_wrap {
+	margin-top: 8px;
+}
+
+.blog_content_comment_add_wrap ul li {
+	display: inline;
+}
+
 .blog_dotBottom {
 	border-bottom-style: dotted;
 	border-bottom-width: 1px;
@@ -247,6 +262,10 @@
 	max-height: 80%;
 }
 
+#borderTop {
+	border-color: #bbb;
+	border-top-style: dotted;
+}
 .Sidelogininfo {
 	-moz-border-radius:10px;
 	-webkit-border-radius:10px;

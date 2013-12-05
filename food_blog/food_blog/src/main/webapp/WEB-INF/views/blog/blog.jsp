@@ -49,7 +49,7 @@
 									<%-- <form:input path="userId" class="input" data-form="create" /> --%>
 								</c:forEach>								
 							</div>
-							<div class="blog_content_comment_add_wrap">
+							<div class="blog_content_comment_add_wrap" id="borderTop">
 								<ul>
 									<li class="blog_comment_add_input_li"><input class="blog_comment_input_input" type="text" /></li>
 									<li><button class="blog_comment_add" >작성</button></li>

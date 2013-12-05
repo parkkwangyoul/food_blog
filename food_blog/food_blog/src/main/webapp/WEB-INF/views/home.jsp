@@ -56,7 +56,7 @@
 						<form:form commandName="userInfo">
 							<li><form:input path="userId" value="아이디" size="250" id="home-login-input"/></li>
 							<li><form:password path="password" value="password" size="250" id="home-password-input"/></li>
-							<li><input type="submit" value="로그인" /></li>
+							<li ><input type="submit" value="로그인" /></li>
 							<br>
 							<li><a href="<c:url value='/join/' />">회원가입</a></li>
 						</form:form>
