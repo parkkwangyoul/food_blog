@@ -12,45 +12,62 @@
 <title>Tasty_Home</title>
 </head>
 <body>
- 	<div id="homeContainer">
-		<div id="homeHeader">
-			<h1>Main Page!</h1>
+	<div id="homeHeader">
+		<h1>[ Food Blog ]</h1>
+	</div>
+
+	<div id="homeContent"></div>
+
+	<div id="homeSide">
+		<div class="Sidelogininfo">
+			<ul class="-login-loginForm">
+				<c:choose>
+					<c:when test="${not empty sessionScope.userInfo }">
+						<li><h2>${sessionScope.userInfo.name }님환영합니다.</h2></li>
+						<li><a href="<c:url value='/login/logout/'/>">로그아웃</a></li>
+						<li id="my_blog_go_wrap" data-address="${blogInfo.blogAddress }"><input
+							id="my_blog_go" type="button" value="나의 블로그로 가기" /></li>
+						<li><a href="<c:url value='/modify/'/>">수정하기</a></li>
+					</c:when>
+					<c:otherwise>
+						<%-- <form:form commandName="userInfo" class="login">
+							<p>
+								<label for="login">ID:</label>
+								<form:input value="id" path="userId" />
+							</p>
+							<p>
+								<label for="password">Password:</label>
+								<form:password path="password" value="********" />
+							</p>
+							<p class="login-submit">
+								<!-- :before -->
+								<button type="submit" class="login-button">:before
+									"Login" :after</button>
+								<!-- :after -->
+							</p>
+
+							<div style="float: left; margin-left: 365px">
+								<a href="<c:url value='/join/' />"> <img alt="loginError"
+									src="${cp}/resources/image/btn_sign_in.png" width="150px"
+									height="150px" />
+								</a>
+							</div>
+						</form:form> --%>
+						<form:form commandName="userInfo">
+							<li><form:input path="userId" value="아이디" size="250" id="home-login-input"/></li>
+							<li><form:password path="password" value="password" size="250" id="home-password-input"/></li>
+							<li><input type="submit" value="로그인" /></li>
+							<br>
+							<li><a href="<c:url value='/join/' />">회원가입</a></li>
+						</form:form>
+					</c:otherwise>
+				</c:choose>
+			</ul>
 		</div>
 
-		<div id="homeContent">
-		</div>
+		<div class="homeSideadinfo1">광고</div>
 
- 		<div id="homeSide">
-			<div id="homeSidelogininfo">
-				<section class="gi-login-body">
-					<header class="gi-login-header">
-						<ul class="gi-login-loginForm">
-							<c:choose>
-								<c:when test = "${not empty sessionScope.userInfo }">
-								<li><h2>${sessionScope.userInfo.name }님  환영합니다. </h2></li>
-								<li><a href="<c:url value='/login/logout/'/>">로그아웃</a></li>
-								<li id="my_blog_go_wrap" data-address="${blogInfo.blogAddress }"><input id="my_blog_go" type = "button" value="나의 블로그로 가기"/></li>
-								<li><a href="<c:url value='/modify/'/>">수정하기</a></li>
-							</c:when>
-							<c:otherwise>
-								<form:form commandName="userInfo">
-									<li><form:input path="userId" value="아이디" /></li>
-									<li><form:password path="password" value="password" /></li>
-									<li><input type="submit" value="로그인" /></li>
-									<br>
-									<li><a href="<c:url value='/join/' />">회원가입</a></li>
-								</form:form>
-								</c:otherwise>
-							</c:choose>
-						</ul>
-					</header>
-				</section>
-			</div>
-			
-			<div id="homeSideadinfo1">광고</div>
-			
-			<div id="homeSideadinfo2">광고</div>
-		</div>
+		<div class="homeSideadinfo2">광고</div>
 	</div>
 </body>
 </html>

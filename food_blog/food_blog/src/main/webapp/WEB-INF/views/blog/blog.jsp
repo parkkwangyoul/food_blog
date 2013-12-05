@@ -22,8 +22,8 @@
 		<div>
 			<c:choose>
 				<c:when test="${contentList == '[]' or contentList == null }">
-											게시물이 없습니다.
-										</c:when>
+					게시물이 없습니다.
+				</c:when>
 				<c:otherwise>
 					<c:forEach var="content" items="${contentList }">
 						<div class="blog_content blog_dotBottom" data-pn="${content.pn }" data-user="${sessionScope.userInfo.name }">
